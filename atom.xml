@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://guochen-thlg.github.io/"/>
-  <updated>2020-07-06T13:42:59.034Z</updated>
+  <updated>2020-08-14T13:57:19.084Z</updated>
   <id>https://guochen-thlg.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue 使用 elemen UI 导航菜单所遇到的问题</title>
+    <link href="https://guochen-thlg.github.io/2020/08/14/vue-%E4%BD%BF%E7%94%A8-elemen-UI-%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E6%89%80%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/23181/"/>
+    <id>https://guochen-thlg.github.io/2020/08/14/vue-%E4%BD%BF%E7%94%A8-elemen-UI-%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E6%89%80%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/23181/</id>
+    <published>2020-08-14T11:24:48.000Z</published>
+    <updated>2020-08-14T13:57:19.084Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们常常在开发vue 项目中使用 elemen UI 开结合开发，但在单页面应用中，随着用户的操作而改变的状态，我们常常使用 VueX 来做状态管理，但是，如果用户刷新页面，之前的状态都会消失，那么，导航该如何准确给当前页面的导航按钮添加选中的样式呢？</p><a id="more"></a><p>直接上代码</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-menu router mode="horizontal" @select="selectMenu"&gt;</span><br><span class="line">    &lt;template v-for="(item,index) in navlist"&gt;</span><br><span class="line">      &lt;el-menu-item :index="item.path" :key="index" disabled&gt;{{item.name}}&lt;/el-menu-item&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">  &lt;/el-menu&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></tbody></table></figure><p>这样写的问题是，当用户刷新页面时，当前页面对应的导航并不会被添加选中样式，那该怎么办呢？</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-menu router :default-active="$route.path" mode="horizontal" @select="selectMenu"&gt;</span><br><span class="line">    &lt;template v-for="(item,index) in navlist"&gt;</span><br><span class="line">      &lt;el-menu-item :index="item.path" :key="index" disabled&gt;{{item.name}}&lt;/el-menu-item&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">  &lt;/el-menu&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></tbody></table></figure><p>当我们这样写，将当前路径时时绑定到导航上，就可以完美实现了.</p><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们常常在开发vue 项目中使用 elemen UI 开结合开发，但在单页面应用中，随着用户的操作而改变的状态，我们常常使用 VueX 来做状态管理，但是，如果用户刷新页面，之前的状态都会消失，那么，导航该如何准确给当前页面的导航按钮添加选中的样式呢？&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>教你如何在本地开发 Shopify 主题</title>

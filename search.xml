@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>vue 使用 elemen UI 导航菜单所遇到的问题</title>
+    <url>/2020/08/14/vue-%E4%BD%BF%E7%94%A8-elemen-UI-%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95%E6%89%80%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/23181/</url>
+    <content><![CDATA[<p>我们常常在开发vue 项目中使用 elemen UI 开结合开发，但在单页面应用中，随着用户的操作而改变的状态，我们常常使用 VueX 来做状态管理，但是，如果用户刷新页面，之前的状态都会消失，那么，导航该如何准确给当前页面的导航按钮添加选中的样式呢？</p><a id="more"></a><p>直接上代码</p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-menu router mode="horizontal" @select="selectMenu"&gt;</span><br><span class="line">    &lt;template v-for="(item,index) in navlist"&gt;</span><br><span class="line">      &lt;el-menu-item :index="item.path" :key="index" disabled&gt;{{item.name}}&lt;/el-menu-item&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">  &lt;/el-menu&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></tbody></table></figure><p>这样写的问题是，当用户刷新页面时，当前页面对应的导航并不会被添加选中样式，那该怎么办呢？</p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-menu router :default-active="$route.path" mode="horizontal" @select="selectMenu"&gt;</span><br><span class="line">    &lt;template v-for="(item,index) in navlist"&gt;</span><br><span class="line">      &lt;el-menu-item :index="item.path" :key="index" disabled&gt;{{item.name}}&lt;/el-menu-item&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">  &lt;/el-menu&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></tbody></table></figure><p>当我们这样写，将当前路径时时绑定到导航上，就可以完美实现了.</p><!-- rebuild by neat --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+  </entry>
+  <entry>
     <title>教你如何在本地开发 Shopify 主题</title>
     <url>/2020/07/05/%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E5%9C%A8%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91-Shopify-%E4%B8%BB%E9%A2%98/37643/</url>
     <content><![CDATA[<p>我们在开发 Shopify 主题的时候，常常是在官方的线上编辑器上进行修改代码的，这样的编辑效果不是很好（不能格式化、不能智能提示），而且对于我们想使用自己喜欢的编辑器来编辑的人来说，很是不舒服，那么有没有什么方法可以实现在本地编辑器上进行开发呢？接下来就让我们在本地配置一下环境。</p><a id="more"></a><h3 id="下载-Shopify-主题套件"><a href="#下载-Shopify-主题套件" class="headerlink" title="下载 Shopify 主题套件"></a>下载 Shopify 主题套件</h3><p><a href="https://shopify-themekit.s3.amazonaws.com/v1.0.2/windows-amd64/theme.exe" target="_blank" rel="noopener">win10-64</a><br><br>如果下载速度较慢，也可以下载我百度网盘里的<br><a href="https://pan.baidu.com/s/1YMQ2adpGaBpiwDCYCvoPSA" target="_blank" rel="noopener">https://pan.baidu.com/s/1YMQ2adpGaBpiwDCYCvoPSA</a>提取码：pt8g</p><p>下载完成后，创建一个 Theme Kit 文件夹，将程序复制到文件夹中，然后将路径（D:\DevelopmentTool\Theme Kit）添加到 环境变量（Path）中</p><p>完成后 打开 cmd.exe 并输入 theme</p><h3 id="创建自定义-应用程序"><a href="#创建自定义-应用程序" class="headerlink" title="创建自定义 应用程序"></a>创建自定义 应用程序</h3><p>创建一个自定义应用程序 设置 Theme templates and theme assets 为 Read and write<br>得到 密码后 ，复制下来，保存到一个文件里</p><h3 id="下载主题模板"><a href="#下载主题模板" class="headerlink" title="下载主题模板"></a>下载主题模板</h3><ol><li>查看模板ID</li></ol><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">theme new --password=[your-password] --store=[your-store.myshopify.com] --name=[theme name]</span><br></pre></td></tr></tbody></table></figure><p>记住主题 ID</p><p>创建一个文件夹，这将是存放你主题文件的项目模板，然后执行</p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">theme get -p=[your-password] -s=[you-store.myshopify.com] -t=[your-theme-id]</span><br></pre></td></tr></tbody></table></figure><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>下载配置文件中的主题</p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">theme download</span><br></pre></td></tr></tbody></table></figure><p>打开将在浏览器中打开主题的预览页面，并打印出URL供您参考</p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">theme open</span><br></pre></td></tr></tbody></table></figure><p>Watch将启动一个过程，该过程将监视您的目录中的更改并将其上载到Shopify。任何更改将被记录到终端，并且上传状态也将被记录。只需输入ctrl + C即可停止该程序</p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">theme watch</span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>
