@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://guochen-thlg.github.io/"/>
-  <updated>2021-01-18T01:55:02.876Z</updated>
+  <updated>2021-01-23T00:06:16.147Z</updated>
   <id>https://guochen-thlg.github.io/</id>
   
   <author>
@@ -17,11 +17,65 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>koa-body实现上传文件 分别保存自定义文件夹</title>
+    <link href="https://guochen-thlg.github.io/2021/01/22/koa-body%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/4437/"/>
+    <id>https://guochen-thlg.github.io/2021/01/22/koa-body%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/4437/</id>
+    <published>2021-01-22T13:53:58.000Z</published>
+    <updated>2021-01-23T00:06:16.147Z</updated>
+    
+    <content type="html"><![CDATA[<p>如何使用ndoe实现上传文件，在使用koa 开发过程中，使用koa-body 不仅可以实现上传文件，还可以解析 POST 参数</p><a id="more"></a><p>配置如下</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">app.use(</span><br><span class="line">koaBody({</span><br><span class="line">multipart: <span class="literal">true</span>, <span class="comment">// 支持上传文件</span></span><br><span class="line">patchNode: <span class="literal">true</span>,</span><br><span class="line">formidable: {</span><br><span class="line">uploadDir: path.join(__dirname, <span class="string">'uploads/'</span>), <span class="comment">// 上传文件路径</span></span><br><span class="line">keepExtensi·  ons: <span class="literal">true</span>, <span class="comment">// 保持文件后缀</span></span><br><span class="line">maxFieldsSize: <span class="number">5</span> * <span class="number">1024</span> * <span class="number">1024</span>, <span class="comment">// 文件上传大小</span></span><br><span class="line">onFileBegin: <span class="function">(<span class="params">name, file</span>) =&gt;</span> {</span><br><span class="line"><span class="comment">// 文件上传前的设置</span></span><br><span class="line"><span class="keyword">let</span> shop = name.split(<span class="string">'|'</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">let</span> type = name.split(<span class="string">'|'</span>)[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">let</span> ext = file.name.split(<span class="string">'.'</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 判断保存路径是否存在，不存在则创建文件夹</span></span><br><span class="line"><span class="keyword">let</span> dir = path.join(__dirname, <span class="string">`uploads/<span class="subst">${shop}</span>`</span>)</span><br><span class="line">checkDirExist(dir)</span><br><span class="line">dir = path.join(__dirname, <span class="string">`uploads/<span class="subst">${shop}</span>/<span class="subst">${type}</span>`</span>)</span><br><span class="line">        checkDirExist(dir)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 图片保存的实际路径</span></span><br><span class="line">file.path = <span class="string">`<span class="subst">${dir}</span>\\<span class="subst">${file.name}</span>`</span></span><br><span class="line">},</span><br><span class="line">},</span><br><span class="line">})</span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkDirExist</span> (<span class="params">dir</span>) </span>{</span><br><span class="line"><span class="keyword">if</span> (!fs.existsSync(dir)) { fs.mkdirSync(dir) }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如何使用ndoe实现上传文件，在使用koa 开发过程中，使用koa-body 不仅可以实现上传文件，还可以解析 POST 参数&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Koa-body" scheme="https://GuoChen-thlg.github.io/categories/Koa-body/"/>
+    
+      <category term="上传文件" scheme="https://GuoChen-thlg.github.io/categories/Koa-body/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/"/>
+    
+      <category term="node" scheme="https://GuoChen-thlg.github.io/categories/Koa-body/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/node/"/>
+    
+    
+      <category term="Koa" scheme="https://GuoChen-thlg.github.io/tags/Koa/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>koa-body POST 方式出现 415 unsupported media type</title>
+    <link href="https://guochen-thlg.github.io/2021/01/22/koa-body415/41372/"/>
+    <id>https://guochen-thlg.github.io/2021/01/22/koa-body415/41372/</id>
+    <published>2021-01-22T13:44:46.000Z</published>
+    <updated>2021-01-22T13:53:35.891Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用 Koa 写了个插件，要上传文件时 使用了 koa-body 在 POST 提交参数时，总是报错 415 unsupported media type 苦思不得其解<br>在痛苦了半天的结果下，最终找到了问题所在</p><a id="more"></a><p>主要是开启了 <code>encoding: 'gzip'</code> 这个配置，注释后发现可以运行，完美解决。</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.use(</span><br><span class="line">koaBody({</span><br><span class="line">multipart: <span class="literal">true</span>, <span class="comment">// 支持上传文件</span></span><br><span class="line">patchNode: <span class="literal">true</span>,</span><br><span class="line"><span class="comment">// encoding: 'gzip',</span></span><br><span class="line">})</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用 Koa 写了个插件，要上传文件时 使用了 koa-body 在 POST 提交参数时，总是报错 415 unsupported media type 苦思不得其解&lt;br&gt;在痛苦了半天的结果下，最终找到了问题所在&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="node" scheme="https://GuoChen-thlg.github.io/categories/node/"/>
+    
+      <category term="koa-body" scheme="https://GuoChen-thlg.github.io/categories/node/koa-body/"/>
+    
+      <category term="koa" scheme="https://GuoChen-thlg.github.io/categories/node/koa-body/koa/"/>
+    
+    
+      <category term="koa" scheme="https://GuoChen-thlg.github.io/tags/koa/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript函数工具整理</title>
     <link href="https://guochen-thlg.github.io/2021/01/17/JavaScript%E5%87%BD%E6%95%B0%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/43110/"/>
     <id>https://guochen-thlg.github.io/2021/01/17/JavaScript%E5%87%BD%E6%95%B0%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/43110/</id>
     <published>2021-01-17T08:58:16.000Z</published>
-    <updated>2021-01-18T01:55:02.876Z</updated>
+    <updated>2021-01-19T02:45:56.175Z</updated>
     
     <content type="html"><![CDATA[<p>日常函数总结</p><a id="more"></a><p>修改当前历史记录<br>静默修改浏览器 URL 不刷新页面</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.history.replaceState({ <span class="attr">path</span>: <span class="string">'url'</span> }, <span class="string">''</span>, url)</span><br></pre></td></tr></tbody></table></figure><p>解析 URL 参数</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">analysisURL</span>(<span class="params">string</span>) </span>{</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">JSON</span>.parse(</span><br><span class="line"><span class="string">`{ <span class="subst">${string</span></span></span><br><span class="line"><span class="string"><span class="subst">.slice(string.indexOf(<span class="string">'?'</span>) + <span class="number">1</span>)</span></span></span><br><span class="line"><span class="string"><span class="subst">.split(<span class="string">'&amp;'</span>)</span></span></span><br><span class="line"><span class="string"><span class="subst">.map(</span></span></span><br><span class="line"><span class="string"><span class="subst">o =&gt; <span class="string">`"<span class="subst">${o.slice(<span class="number">0</span>, o.indexOf(<span class="string">'='</span>))}</span>":"<span class="subst">${o.slice(o.indexOf(<span class="string">'='</span>) + <span class="number">1</span>)}</span>"`</span></span></span></span><br><span class="line"><span class="string"><span class="subst">)</span></span></span><br><span class="line"><span class="string"><span class="subst">.join(<span class="string">','</span>)}</span>}`</span></span><br><span class="line">)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
