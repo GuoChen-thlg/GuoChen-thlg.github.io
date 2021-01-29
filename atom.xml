@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://guochen-thlg.github.io/"/>
-  <updated>2021-01-28T01:38:18.614Z</updated>
+  <updated>2021-01-28T01:38:42.362Z</updated>
   <id>https://guochen-thlg.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://guochen-thlg.github.io/2021/01/28/ssh%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E5%99%A8VSCode%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/14742/"/>
     <id>https://guochen-thlg.github.io/2021/01/28/ssh%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E5%99%A8VSCode%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/14742/</id>
     <published>2021-01-28T01:19:09.000Z</published>
-    <updated>2021-01-28T01:38:18.614Z</updated>
+    <updated>2021-01-28T01:38:42.362Z</updated>
     
     <content type="html"><![CDATA[<p>我们在开发中有时会遇到要使用公网进行开发，虽然可以使用一下映射工具 如 ngrok 等，但是，我就想用服务器，那在服务器上如何进行开发调试呢？</p><a id="more"></a><p>这里我使用 Romote SSH 插件。</p><h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>打开VSCode ，在插件商店中搜索 Romote SSH 即可安装</p><h3 id="生成秘钥公钥"><a href="#生成秘钥公钥" class="headerlink" title="生成秘钥公钥"></a>生成秘钥公钥</h3><p>打开命令窗口（win+R cmd）输入</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></tbody></table></figure><p>之后一路回车即可，当然，你也可以自定义文件名以及加密密码</p><p>会生成两个文件 id_rsa (秘钥) id_rsa.pub (公钥)，我们将公钥的内容加到服务器 <code>~/.ssh/authorized_keys</code> 文件中</p><p>设置权限 命令如下</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 700 ~/.ssh</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys​</span><br></pre></td></tr></tbody></table></figure><h3 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h3><p>之后打开 Romote SSH 插件</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@***.**.**.**</span><br></pre></td></tr></tbody></table></figure><p>设置配置文件</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host 自定义</span><br><span class="line">  HostName IP </span><br><span class="line">  User root  用户名</span><br><span class="line">  Port 22 默认 22</span><br><span class="line">  IdentityFile "C:\Users\***\.ssh\id_rsa" 秘钥绝对路径</span><br></pre></td></tr></tbody></table></figure><p>之后就可以快乐的免密连接了</p><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
@@ -60,11 +60,11 @@
       <category term="Koa" scheme="https://GuoChen-thlg.github.io/categories/Koa/"/>
     
     
-      <category term="node" scheme="https://GuoChen-thlg.github.io/tags/node/"/>
-    
       <category term="Koa-body" scheme="https://GuoChen-thlg.github.io/tags/Koa-body/"/>
     
       <category term="上传文件" scheme="https://GuoChen-thlg.github.io/tags/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/"/>
+    
+      <category term="node" scheme="https://GuoChen-thlg.github.io/tags/node/"/>
     
   </entry>
   
