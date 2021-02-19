@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>如何使div垂直水平居中</title>
+    <url>/2021/02/19/%E5%A6%82%E4%BD%95%E4%BD%BFdiv%E5%9E%82%E7%9B%B4%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD/9230/</url>
+    <content><![CDATA[<p>使 div 垂直水平居中</p><a id="more"></a><figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">	<span class="selector-class">.parent</span> {</span></span><br><span class="line">		width: 600px;</span><br><span class="line">		height: 600px;</span><br><span class="line">	}</span><br><span class="line"><span class="css">	<span class="selector-class">.child</span> {</span></span><br><span class="line">		width: 200px;</span><br><span class="line">		height: 200px;</span><br><span class="line">		background-color: rebeccapurple;</span><br><span class="line">	}</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></tbody></table></figure><h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><figure class="highlight css"><table><tbody><tr><td class="code"><pre><span class="line"><span class="selector-class">.child</span> {</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h3 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h3><figure class="highlight css"><table><tbody><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> {</span><br><span class="line">	<span class="attribute">display</span>: flex;</span><br><span class="line">	<span class="attribute">align-items</span>: center;</span><br><span class="line">	<span class="attribute">justify-content</span>: center;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h3 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h3><figure class="highlight css"><table><tbody><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> {</span><br><span class="line">	<span class="attribute">display</span>: grid;</span><br><span class="line">}</span><br><span class="line"><span class="selector-class">.child</span> {</span><br><span class="line">	<span class="attribute">align-self</span>: center;</span><br><span class="line">	<span class="attribute">justify-self</span>: center;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h3 id="方案四"><a href="#方案四" class="headerlink" title="方案四"></a>方案四</h3><figure class="highlight css"><table><tbody><tr><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> {</span><br><span class="line">	<span class="attribute">text-align</span>: center;</span><br><span class="line">}</span><br><span class="line"><span class="selector-class">.parent</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">	<span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">	<span class="attribute">display</span>: inline-block;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">vertical-align</span>: middle;</span><br><span class="line">}</span><br><span class="line"><span class="selector-class">.child</span> {</span><br><span class="line">	<span class="attribute">display</span>: inline-block;</span><br><span class="line">	<span class="attribute">vertical-align</span>: middle;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+        <tag>css布局</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ssh远程登录服务器VSCode调试代码</title>
     <url>/2021/01/28/ssh%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E5%99%A8VSCode%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/14742/</url>
     <content><![CDATA[<p>我们在开发中有时会遇到要使用公网进行开发，虽然可以使用一下映射工具 如 ngrok 等，但是，我就想用服务器，那在服务器上如何进行开发调试呢？</p><a id="more"></a><p>这里我使用 Romote SSH 插件。</p><h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>打开VSCode ，在插件商店中搜索 Romote SSH 即可安装</p><h3 id="生成秘钥公钥"><a href="#生成秘钥公钥" class="headerlink" title="生成秘钥公钥"></a>生成秘钥公钥</h3><p>打开命令窗口（win+R cmd）输入</p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></tbody></table></figure><p>之后一路回车即可，当然，你也可以自定义文件名以及加密密码</p><p>会生成两个文件 id_rsa (秘钥) id_rsa.pub (公钥)，我们将公钥的内容加到服务器 <code>~/.ssh/authorized_keys</code> 文件中</p><p>设置权限 命令如下</p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">chmod 700 ~/.ssh</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys​</span><br></pre></td></tr></tbody></table></figure><h3 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h3><p>之后打开 Romote SSH 插件</p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">ssh root@***.**.**.**</span><br></pre></td></tr></tbody></table></figure><p>设置配置文件</p><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">Host 自定义</span><br><span class="line">  HostName IP </span><br><span class="line">  User root  用户名</span><br><span class="line">  Port 22 默认 22</span><br><span class="line">  IdentityFile "C:\Users\***\.ssh\id_rsa" 秘钥绝对路径</span><br></pre></td></tr></tbody></table></figure><p>之后就可以快乐的免密连接了</p><!-- rebuild by neat --><script>
@@ -56,9 +86,9 @@
         <category>Koa</category>
       </categories>
       <tags>
+        <tag>node</tag>
         <tag>Koa-body</tag>
         <tag>上传文件</tag>
-        <tag>node</tag>
       </tags>
   </entry>
   <entry>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://guochen-thlg.github.io/"/>
-  <updated>2021-01-28T01:38:42.362Z</updated>
+  <updated>2021-02-19T06:58:44.686Z</updated>
   <id>https://guochen-thlg.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何使div垂直水平居中</title>
+    <link href="https://guochen-thlg.github.io/2021/02/19/%E5%A6%82%E4%BD%95%E4%BD%BFdiv%E5%9E%82%E7%9B%B4%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD/9230/"/>
+    <id>https://guochen-thlg.github.io/2021/02/19/%E5%A6%82%E4%BD%95%E4%BD%BFdiv%E5%9E%82%E7%9B%B4%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD/9230/</id>
+    <published>2021-02-19T06:47:16.000Z</published>
+    <updated>2021-02-19T06:58:44.686Z</updated>
+    
+    <content type="html"><![CDATA[<p>使 div 垂直水平居中</p><a id="more"></a><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-class">.parent</span> {</span></span><br><span class="line">width: 600px;</span><br><span class="line">height: 600px;</span><br><span class="line">}</span><br><span class="line"><span class="css"><span class="selector-class">.child</span> {</span></span><br><span class="line">width: 200px;</span><br><span class="line">height: 200px;</span><br><span class="line">background-color: rebeccapurple;</span><br><span class="line">}</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></tbody></table></figure><h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span> {</span><br><span class="line"><span class="attribute">position</span>: absolute;</span><br><span class="line"><span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line"><span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h3 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h3><figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> {</span><br><span class="line"><span class="attribute">display</span>: flex;</span><br><span class="line"><span class="attribute">align-items</span>: center;</span><br><span class="line"><span class="attribute">justify-content</span>: center;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h3 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h3><figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> {</span><br><span class="line"><span class="attribute">display</span>: grid;</span><br><span class="line">}</span><br><span class="line"><span class="selector-class">.child</span> {</span><br><span class="line"><span class="attribute">align-self</span>: center;</span><br><span class="line"><span class="attribute">justify-self</span>: center;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h3 id="方案四"><a href="#方案四" class="headerlink" title="方案四"></a>方案四</h3><figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> {</span><br><span class="line"><span class="attribute">text-align</span>: center;</span><br><span class="line">}</span><br><span class="line"><span class="selector-class">.parent</span><span class="selector-pseudo">::before</span> {</span><br><span class="line"><span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line"><span class="attribute">display</span>: inline-block;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line"><span class="attribute">vertical-align</span>: middle;</span><br><span class="line">}</span><br><span class="line"><span class="selector-class">.child</span> {</span><br><span class="line"><span class="attribute">display</span>: inline-block;</span><br><span class="line"><span class="attribute">vertical-align</span>: middle;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使 div 垂直水平居中&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="CSS" scheme="https://GuoChen-thlg.github.io/categories/CSS/"/>
+    
+    
+      <category term="CSS" scheme="https://GuoChen-thlg.github.io/tags/CSS/"/>
+    
+      <category term="css布局" scheme="https://GuoChen-thlg.github.io/tags/css%E5%B8%83%E5%B1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>ssh远程登录服务器VSCode调试代码</title>
@@ -60,11 +85,11 @@
       <category term="Koa" scheme="https://GuoChen-thlg.github.io/categories/Koa/"/>
     
     
+      <category term="node" scheme="https://GuoChen-thlg.github.io/tags/node/"/>
+    
       <category term="Koa-body" scheme="https://GuoChen-thlg.github.io/tags/Koa-body/"/>
     
       <category term="上传文件" scheme="https://GuoChen-thlg.github.io/tags/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/"/>
-    
-      <category term="node" scheme="https://GuoChen-thlg.github.io/tags/node/"/>
     
   </entry>
   
