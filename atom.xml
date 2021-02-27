@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://guochen-thlg.github.io/"/>
-  <updated>2021-02-25T06:53:12.049Z</updated>
+  <updated>2021-02-27T07:45:21.813Z</updated>
   <id>https://guochen-thlg.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Koa跨域解决方案</title>
+    <link href="https://guochen-thlg.github.io/2021/02/27/Koa%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/57978/"/>
+    <id>https://guochen-thlg.github.io/2021/02/27/Koa%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/57978/</id>
+    <published>2021-02-27T11:16:31.000Z</published>
+    <updated>2021-02-27T07:45:21.813Z</updated>
+    
+    <content type="html"><![CDATA[<p>在开发插件的过程中遇到了接口请求不同,显示跨域错误。<br><br>场景：我在本地开发启动了三个项目,插件部分请求服务器端出现跨域,我的服务器端是用 Koa 框架开发的。</p><a id="more"></a><h3 id="简单粗暴解决跨域"><a href="#简单粗暴解决跨域" class="headerlink" title="简单粗暴解决跨域"></a>简单粗暴解决跨域</h3><p>自己写一个中间件来判断哪些路由需要跨域</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">ctx, next</span>) </span>{</span><br><span class="line"><span class="comment">// Allow cross-domain whitelist</span></span><br><span class="line"><span class="built_in">console</span>.log(ctx.request.url)</span><br><span class="line"><span class="keyword">if</span> (<span class="regexp">/^\/plug-in\/|^\/expose-api\//</span>.test(ctx.request.url)) {</span><br><span class="line"><span class="comment">// Allow requests for all domains</span></span><br><span class="line">ctx.set(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'*'</span>)</span><br><span class="line">}</span><br><span class="line"><span class="keyword">await</span> next()</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h3 id="安装-中间件"><a href="#安装-中间件" class="headerlink" title="安装 中间件"></a>安装 中间件</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i koa2-cors -S</span><br></pre></td></tr></tbody></table></figure><p>使用</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const cors=require("koa2-cors")</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">app.use(cors())</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></tbody></table></figure><p><a href="https://github.com/zadzbw/koa2-cors#readme" target="_blank" rel="noopener">koa2-cors Github</a></p><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在开发插件的过程中遇到了接口请求不同,显示跨域错误。&lt;br&gt;&lt;br&gt;场景：我在本地开发启动了三个项目,插件部分请求服务器端出现跨域,我的服务器端是用 Koa 框架开发的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Node" scheme="https://GuoChen-thlg.github.io/categories/Node/"/>
+    
+      <category term="koa" scheme="https://GuoChen-thlg.github.io/categories/Node/koa/"/>
+    
+    
+      <category term="koa" scheme="https://GuoChen-thlg.github.io/tags/koa/"/>
+    
+      <category term="跨域" scheme="https://GuoChen-thlg.github.io/tags/%E8%B7%A8%E5%9F%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>手动实现reduce函数</title>
@@ -189,11 +216,11 @@
       <category term="koa" scheme="https://GuoChen-thlg.github.io/categories/koa/"/>
     
     
+      <category term="koa" scheme="https://GuoChen-thlg.github.io/tags/koa/"/>
+    
       <category term="node" scheme="https://GuoChen-thlg.github.io/tags/node/"/>
     
       <category term="koa-body" scheme="https://GuoChen-thlg.github.io/tags/koa-body/"/>
-    
-      <category term="koa" scheme="https://GuoChen-thlg.github.io/tags/koa/"/>
     
   </entry>
   
