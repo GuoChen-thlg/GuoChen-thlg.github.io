@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Shopify公共应用开发(2)</title>
+    <url>/2021/03/06/Shopify%E5%85%AC%E5%85%B1%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91-2/16015/</url>
+    <content><![CDATA[<p>接着上次的项目，我们这次把项目安装到 Shopify 商店。<br><br>首相，我们要有个开发者账号,来这里 <a href="https://www.shopify.com/partners" target="_blank" rel="noopener">注册</a>。</p><a id="more"></a><h3 id="创建公共应用"><a href="#创建公共应用" class="headerlink" title="创建公共应用"></a>创建公共应用</h3><p>我们创建一个公共应用,这时，我们会得到 <code>client_id</code> <code>client_secret</code> ,然后设置应用的 url 以及 重定向 url</p><p>有条件的可以进行穿透 ,也可以填写本地地址 (<a href="https://127.0.0.1:3000/" target="_blank" rel="noopener">https://127.0.0.1:3000/</a>)</p><h3 id="OAuth-身份验证"><a href="#OAuth-身份验证" class="headerlink" title="OAuth 身份验证"></a>OAuth 身份验证</h3><p>回到项目中 ,创建路由 安装路由 (/install) 和认证路由 (/auth/callback)</p><p>/install</p><ol><li>获得安装商店 xxx.myshopify.com</li><li>该应用需要的权限</li><li>该应用的 client_id</li><li>重定向 URl</li><li>设置一个随机数</li><li>重定向到</li></ol><figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line"><span class="string">`https://<span class="subst">${shop}</span>/admin/oauth/authorize?client_id=<span class="subst">${client_id}</span>&amp;scope=<span class="subst">${scopes}</span>&amp;redirect_uri=<span class="subst">${HOST}</span>/auth/callback&amp;state=<span class="subst">${nonce}</span>`</span></span><br></pre></td></tr></tbody></table></figure><p>/auth/callback</p><ol><li>获取参数 code, hmac, shop, state, timestamp</li><li>判断 state 与我们设置的随机数一样并且验证 hmac</li><li>通过 code 获取访问令牌</li></ol><figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> res = <span class="keyword">await</span> fetch(<span class="string">`https://<span class="subst">${shop}</span>/admin/oauth/access_token`</span>, {</span><br><span class="line">	method: <span class="string">'POST'</span>,</span><br><span class="line">	body: <span class="built_in">JSON</span>.stringify({</span><br><span class="line">		client_id: CLIENT_ID,</span><br><span class="line">		client_secret: CLIENT_SECRET,</span><br><span class="line">		code: code,</span><br><span class="line">	}),</span><br><span class="line">	headers: { <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span> },</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure><ol start="4"><li>保存 access_token</li><li>设置 token (JWT认证)</li><li>进入应用(重定向)</li></ol><p><a href="https://shopify.dev/tutorials/authenticate-with-oauth" target="_blank" rel="noopener">认证流程</a></p><h3 id="编写应用功能代码"><a href="#编写应用功能代码" class="headerlink" title="编写应用功能代码"></a>编写应用功能代码</h3><!-- rebuild by neat --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Shopify</category>
+      </categories>
+      <tags>
+        <tag>Shopify 插件</tag>
+        <tag>Shopify 公共应用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>yarn&amp;npm常用命令</title>
     <url>/2021/03/05/yarn&amp;npm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/46610/</url>
     <content><![CDATA[<p>yarn npm 常用命令 (备忘&amp;速查)</p><a id="more"></a><table><thead><tr><th></th><th>yarn</th><th>npm</th></tr></thead><tbody><tr><td>安装</td><td>npm install –global yarn</td><td></td></tr><tr><td>检查版本</td><td>yarn –version</td><td>npm -v</td></tr><tr><td>新建项目</td><td>yarn init</td><td>npm init</td></tr><tr><td>添加依赖项</td><td>yarn add [package]</td><td>npm install [package]</td></tr><tr><td></td><td>yarn add [package]@[version]</td><td>npm install [package]@[version]</td></tr><tr><td></td><td>yarn add [package]@[tag]</td><td>npm install [package]@[tag]</td></tr><tr><td>将依赖项添加到不同类别的依赖项中</td><td></td><td></td></tr><tr><td>devDependencies</td><td>yarn add [package] –dev</td><td>npm install [package] -D</td></tr><tr><td>peerDependencies</td><td>yarn add [package] –peer</td><td></td></tr><tr><td>optionalDependencies</td><td>yarn add [package] –optional</td><td>npm install [package] -O</td></tr><tr><td>升级依赖</td><td>yarn upgrade [package]</td><td>npm update [package]</td></tr><tr><td>删除依赖</td><td>yarn remove [package]</td><td>npm uninstall [package]</td></tr><tr><td>搜索依赖</td><td></td><td>npm search [package]</td></tr><tr><td>安装项目的所有依赖项</td><td>yarn</td><td>npm i</td></tr></tbody></table><!-- rebuild by neat --><script>
