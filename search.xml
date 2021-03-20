@@ -1,6 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>pm2命令</title>
+    <url>/2021/03/20/pm2%E5%91%BD%E4%BB%A4/18509/</url>
+    <content><![CDATA[<p>pm2 命令 速查</p><a id="more"></a><p>用法:</p><pre><code>pm2 [cmd] app</code></pre><p>选项:</p><pre><code>-V, --version                                                输出版本号
+-v --version                                                 打印PM2版本
+-s --silent                                                  隐藏所有消息
+--ext &lt;extensions&gt;                                           仅监视此文件扩展
+-n --name &lt;name&gt;                                             在进程列表中设置一个名称
+-m --mini-list                                               显示无格式化的压缩列表
+--interpreter &lt;interpreter&gt;                                  设置用于执行应用程序的特定解释器，默认为：node
+--interpreter-args &lt;arguments&gt;                               设置传递给解释器的参数（--node-args的别名） 
+--node-args &lt;node_args&gt;                                      要传递给节点的空间分隔的参数
+-o --output &lt;path&gt;                                           为stdout指定日志文件
+-e --error &lt;path&gt;                                            为stderr指定日志文件
+-l --log [path]                                              指定记录文件，该文件会收集stdout和stderr
+--filter-env [envs]                                          过滤掉输出包含提供字符串的全局值</code></pre><p>(默认: )</p><pre><code>--log-type &lt;type&gt;                                            指定日志输出样式（默认情况下，JSON可选）        
+--log-date-format &lt;date format&gt;                              将自定义前缀时间戳添加到日志
+--time                                                       启用时间日志记录
+--disable-logs                                               禁用所有日志存储
+--env &lt;environment_name&gt;                                     指定必须注入生态系统文件的哪些环境变量
+-a --update-env                                              使用重新启动/重新加载更新环境 (-A &lt;=&gt; Apply)
+-f --force                                                   强迫行动
+-i --instances &lt;number&gt;                                      启动[编号]实例（对于网络应用程序）（负载平衡）    
+--parallel &lt;number&gt;                                          并行操作的数量（用于重启/重新加载）
+--shutdown-with-message                                      使用process.send（'shutdown'）而不是process.kill（pid，sigint）的应用程序
+-p --pid &lt;pid&gt;                                               指定PID文件
+-k --kill-timeout &lt;delay&gt;                                    在发送最终的Sigkill信号之前延迟到过程
+--listen-timeout &lt;delay&gt;                                     聆听应用程序重新加载时的超时
+--max-memory-restart &lt;memory&gt;                                如果超出了存储量（以字节为单位），则重新启动应用程序
+--restart-delay &lt;delay&gt;                                      在重新启动之间指定延迟（以毫秒为单位）
+--exp-backoff-restart-delay &lt;delay&gt;                          在重新启动之间指定延迟（以毫秒为单位）
+-x --execute-command                                         使用Fork系统执行程序
+--max-restarts [count]                                       只重新启动脚本计数时间
+-u --user &lt;username&gt;                                         生成启动脚本时定义用户
+--uid &lt;uid&gt;                                                  使用&lt;uid&gt;权限运行目标脚本
+--gid &lt;gid&gt;                                                  使用&lt;gid&gt;权限运行目标脚本
+--namespace &lt;ns&gt;                                             在指定的命名空间中启动应用程序
+--cwd &lt;path&gt;                                                 从路径&lt;cwd&gt;运行目标脚本
+--hp &lt;home path&gt;                                             生成启动脚本时定义主路径
+--wait-ip                                                    覆盖Systemd脚本等待完全互联网连接启动PM2
+--service-name &lt;name&gt;                                        生成启动脚本时定义服务名称
+-c --cron &lt;cron_pattern&gt;                                     基于Cron模式重新启动运行过程
+-c --cron-restart &lt;cron_pattern&gt;                             （别名）根据Cron模式重新启动运行进程
+-w --write                                                   在本地文件夹中写入配置
+--no-daemon                                                  如果它不存在，请在前台运行PM2守护程序
+--source-map-support                                         强制源地图支持
+--only &lt;application-name&gt;                                    使用JSON声明，允许仅在一个应用程序上行动
+--disable-source-map-support                                 强制源地图支持
+--wait-ready                                                 询问PM2等待您的应用程序的准备好事件
+--merge-logs                                                 合并来自不同实例的日志，但保持错误和分开
+--watch [paths]                                              监视更改的应用程序文件夹(默认值:)
+--ignore-watch &lt;folders|files&gt;                               忽略（名称或正则表达式）的路径列表
+--watch-delay &lt;delay&gt;                                        更改文件后指定重启延迟 (--watch-delay 4 (in sec) or 4000ms)
+--no-color                                                   跳过颜色
+--no-vizion                                                  启动不带Vizion功能的应用程序（版本控制控制）
+--no-autorestart                                             在没有自动重启的情况下启动应用程序
+--no-treekill                                                只杀死主要过程，而不是独立的孩子
+--no-pmx                                                     在没有PMX的情况下启动一个应用程序
+--no-automation                                              在没有PMX的情况下启动一个应用程序
+--trace                                                      启用与KM的交易跟踪
+--disable-trace                                              用KM禁用交易跟踪
+--sort &lt;field_name:sort&gt;                                     根据字段的名称排序过程
+--attach                                                     启动/重启/停止/重新加载后附加日志记录
+--v8                                                         启用V8数据收集
+--event-loop-inspector                                       在PMX中启用事件循环检查器转储
+--deep-monitoring                                            启用所有监控工具(equivalent to --v8 --event-loop-inspector --trace)
+-h, --help                                                   输出使用信息</code></pre><p>命令:</p><pre><code>start [options] [name|namespace|file|ecosystem|id...]        启动和守护到应用程序
+trigger &lt;id|proc_name|namespace|all&gt; &lt;action_name&gt; [params]  触发过程动作
+deploy &lt;file|environment&gt;                                    部署您的JSON.
+startOrRestart &lt;json&gt;                                        启动或重新启动JSON文件
+startOrReload &lt;json&gt;                                         开始或优雅地重新加载JSON文件
+pid [app_name]                                               返回[app_name]或全部的pid
+create                                                       返回[app_name]或全部的pid
+startOrGracefulReload &lt;json&gt;                                 开始或优雅地重新加载JSON文件
+stop [options] &lt;id|name|namespace|all|json|stdin...&gt;         停止一个过程
+restart [options] &lt;id|name|namespace|all|json|stdin...&gt;      重新启动一个过程
+scale &lt;app_name&gt; &lt;number&gt;                                    取决于Total_Numbe的群集模式中的过程上/下降r param
+profile:mem [time]                                           样本PM2堆内存
+profile:cpu [time]                                           个人资料PM2 CPU.
+reload &lt;id|name|namespace|all&gt;                               重新加载流程（请注意其用于应用http / https的应用程序）
+id &lt;name&gt;                                                    按名称获取进程ID
+inspect &lt;name&gt;                                               检查一个过程
+delete|del &lt;name|id|namespace|script|all|json|stdin...&gt;      停止并删除PM2进程列表的进程
+sendSignal &lt;signal&gt; &lt;pm2_id|name&gt;                            向目标过程发送系统信号
+ping                                                         ping pm2守护进程 - 如果不是，它将推出它
+updatePM2                                                    使用本地PM2更新内存中PM2
+update                                                       (别名)使用本地PM2更新内存中PM2
+install|module:install [options] &lt;module|git:/&gt;              安装或更新模块并永久运行它
+module:update &lt;module|git:/&gt;                                 更新模块并永久运行它
+module:generate [app_name]                                   在当前文件夹中生成示例模块
+uninstall|module:uninstall &lt;module&gt;                          停止并卸载模块
+package [target]                                             检查和包焦油类型模块
+publish|module:publish [options] [folder]                    发布您目前的模块
+set [key] [value]                                            设置指定的Config &lt;key&gt; &lt;value&gt;
+multiset &lt;value&gt;                                             Multiset Eg例如“key1 Val1键2 Val2
+get [key]                                                    获取&lt;key&gt;的值
+conf [key] [value]                                           获取/设置模块配置值
+config &lt;key&gt; [value]                                         获取/设置模块配置值
+unset &lt;key&gt;                                                  清除指定的Config &lt;key&gt;
+report                                                       为https://github.com/unitech/pm2/issues提供完整的PM2报告   
+link [options] [secret] [public] [name]                      链接PM2监控仪表板
+unlink                                                       与PM2监控仪表板取消链接
+monitor [name]                                               监控目标过程
+unmonitor [name]                                             未解释目标过程
+open                                                         打开PM2监控仪表板
+plus|register [options] [command] [option]                   启用PM2 Plus
+login                                                        登录PM2 Plus Logout
+logout                                                       从PM2 Plus退出
+dump|save [options]                                          转储稍后将其复活的所有流程
+cleardump                                                    创建空转储文件
+send &lt;pm_id&gt; &lt;line&gt;                                          将 stdin 发送到&lt;pm_id&gt;
+attach &lt;pm_id&gt; [comman]                                      将 stdin / stdout  附加到由&lt;pm_id&gt;标识的应用程序
+resurrect                                                    复活以前倾倒的流程
+unstartup [platform]                                         禁用PM2启动钩子
+startup [platform]                                           启用PM2启动挂钩
+logrotate                                                    复制默认的Logotate配置
+ecosystem|init [mode]                                        生成流程conf文件。 （mode = null或简单）
+reset &lt;name|id|all&gt;                                          重置过程的计数器
+describe &lt;name|id&gt;                                           描述一个过程的所有参数
+desc &lt;name|id&gt;                                               (别名)描述一个过程的所有参数
+info &lt;name|id&gt;                                               (别名)描述一个过程的所有参数
+show &lt;name|id&gt;                                               (别名)描述一个过程的所有参数
+env &lt;id&gt;                                                     列出进程ID的所有环境变量
+list|ls                                                      列出所有进程
+l                                                            (别名)列出所有进程
+ps                                                           (别名)列出所有进程
+status                                                       (别名)列出所有进程
+jlist                                                        列出JSON格式的所有进程
+sysmonit                                                     启动系统监控守护程序
+slist|sysinfos [options]                                     列出JSON中的系统信息
+prettylist                                                   打印json在一个接驳的json中
+monit                                                        启动终端监测
+imonit                                                       启动遗留终端监测
+dashboard|dash                                               使用监控和日志启动仪表板
+flush [api]                                                  冲洗日志</code></pre><p><a href="https://github.com/Unitech/pm2" target="_blank" rel="noopener">Github Pm2</a></p><!-- rebuild by neat --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>备忘</category>
+        <category>速查</category>
+      </categories>
+      <tags>
+        <tag>pm2</tag>
+        <tag>守护进程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git常用命令</title>
     <url>/2021/03/08/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/7065/</url>
     <content><![CDATA[<p>Git 常用命令 (备忘)</p><a id="more"></a><h3 id="分支命名规范"><a href="#分支命名规范" class="headerlink" title="分支命名规范"></a>分支命名规范</h3><ul><li><strong>master</strong> 主分支<ul><li>主分支，永远是可用的、稳定的、可直接发布的版本，不能直接在该分支上开发</li></ul></li><li><strong>develop</strong> 开发分支<ul><li>开发主分支，代码永远是最新，所有新功能以这个分支来创建自己的开发分支，该分支只做只合并操作，不能直接在该分支上开发</li></ul></li><li><strong>feature-xxx</strong><ul><li>功能开发分支，在<code>develop</code>上创建分支，以自己开发功能模块命名，功能测试正常后合并到<code>develop</code>分支</li></ul></li><li><strong>release</strong><ul><li>预发布分支，在合并好<code>feature</code>分支的<code>develop</code>分支上创建，主要是用来提测的分支，修改好bug并确定稳定之后合并到<code>develop</code>和<code>master</code>分支，然后发布<code>master</code>分支</li></ul></li><li><strong>release-fix</strong><ul><li>功能bug修复分支，在<code>release</code>上创建分支修复，修复好提测的bug之后合并回<code>release</code>分支</li></ul></li><li><strong>hotfix-xxx</strong><ul><li>紧急bug修改分支，项目上线之后可以会遇到一些环境问题需要紧急修复，在对应版本的 <code>release</code> 分支上创建，流程跟<code>release</code>分支相似，修复完成后合并<code>release</code>分支，根据情况判断需不需要再合并到<code>develop</code>和<code>master</code>分支</li></ul></li></ul><h3 id="Git-命令"><a href="#Git-命令" class="headerlink" title="Git 命令"></a>Git 命令</h3><table><thead><tr><th align="left">git init</th><th align="left">初始化本地git仓库（创建新仓库）</th></tr></thead><tbody><tr><td align="left">git config –global user.name “xxx”</td><td align="left">配置用户名</td></tr><tr><td align="left">git config –global user.email “<a href="mailto:xxx@xxx.com">xxx@xxx.com</a>“</td><td align="left">配置邮件</td></tr><tr><td align="left">git config –global color.ui true</td><td align="left">git status等命令自动着色</td></tr><tr><td align="left">git config –global color.status auto</td><td align="left"></td></tr><tr><td align="left">git config –global color.diff auto</td><td align="left"></td></tr><tr><td align="left">git config –global color.branch auto</td><td align="left"></td></tr><tr><td align="left">git config –global color.interactive auto</td><td align="left"></td></tr><tr><td align="left">git config –global –unset http.proxy</td><td align="left">删除git上的代理配置</td></tr><tr><td align="left">git clone git+ssh://git@192.168.53.168/VT.git</td><td align="left">克隆远程仓库</td></tr><tr><td align="left">git status</td><td align="left">查看当前版本状态（是否修改）</td></tr><tr><td align="left">git add xyz</td><td align="left">添加xyz文件至index</td></tr><tr><td align="left">git add .</td><td align="left">增加当前子目录下所有更改过的文件至index</td></tr><tr><td align="left">git commit -m ‘xxx’</td><td align="left">提交</td></tr><tr><td align="left">git commit –amend -m ‘xxx’</td><td align="left">合并上一次提交（用于反复修改）</td></tr><tr><td align="left">git commit -am ‘xxx’</td><td align="left">将add和commit合为一步</td></tr><tr><td align="left">git rm xxx</td><td align="left">删除index中的文件</td></tr><tr><td align="left">git rm -r</td><td align="left">递归删除</td></tr><tr><td align="left">git log</td><td align="left">显示提交日志</td></tr><tr><td align="left">git log -1</td><td align="left">显示1行日志 -n为n行</td></tr><tr><td align="left">git log -5</td><td align="left"></td></tr><tr><td align="left">git log –stat</td><td align="left">显示提交日志及相关变动文件</td></tr><tr><td align="left">git log -p -m</td><td align="left"></td></tr><tr><td align="left">git show dfb02e6e4f2f7b573337763e5c0013802e392818</td><td align="left">显示某个提交的详细内容</td></tr><tr><td align="left">git show dfb02</td><td align="left">可只用commitid的前几位</td></tr><tr><td align="left">git show HEAD</td><td align="left">显示HEAD提交日志</td></tr><tr><td align="left">git show HEAD^</td><td align="left">显示HEAD的父（上一个版本）的提交日志 ^^为上两个版本 ^5为上5个版本</td></tr><tr><td align="left">git tag</td><td align="left">显示已存在的tag</td></tr><tr><td align="left">git tag -a v2.0 -m ‘xxx’</td><td align="left">增加v2.0的tag</td></tr><tr><td align="left">git show v2.0</td><td align="left">显示v2.0的日志及详细内容</td></tr><tr><td align="left">git log v2.0</td><td align="left">显示v2.0的日志</td></tr><tr><td align="left">git diff</td><td align="left">显示所有未添加至index的变更</td></tr><tr><td align="left">git diff –cached</td><td align="left">显示所有已添加index但还未commit的变更</td></tr><tr><td align="left">git diff HEAD^</td><td align="left">比较与上一个版本的差异</td></tr><tr><td align="left">git diff HEAD – ./lib</td><td align="left">比较与HEAD版本lib目录的差异</td></tr><tr><td align="left">git diff origin/master..master</td><td align="left">比较远程分支master上有本地分支master上没有的</td></tr><tr><td align="left">git diff origin/master..master –stat</td><td align="left">只显示差异的文件，不显示具体内容</td></tr><tr><td align="left">git remote add origin git+ssh://git@192.168.53.168/VT.git</td><td align="left">增加远程定义（用于push/pull/fetch）</td></tr><tr><td align="left">git branch</td><td align="left">显示本地分支</td></tr><tr><td align="left">git branch –contains 50089</td><td align="left">显示包含提交50089的分支</td></tr><tr><td align="left">git branch -a</td><td align="left">显示所有分支</td></tr><tr><td align="left">git branch -r</td><td align="left">显示所有原创分支</td></tr><tr><td align="left">git branch –merged</td><td align="left">显示所有已合并到当前分支的分支</td></tr><tr><td align="left">git branch –no-merged</td><td align="left">显示所有未合并到当前分支的分支</td></tr><tr><td align="left">git branch -m master master_copy</td><td align="left">本地分支改名</td></tr><tr><td align="left">git checkout -b master_copy</td><td align="left">从当前分支创建新分支 master _copy 并检出</td></tr><tr><td align="left">git checkout -b master master_copy</td><td align="left">上面的完整版</td></tr><tr><td align="left">git checkout features/performance</td><td align="left">检出已存在的features/performance分支</td></tr><tr><td align="left">git checkout –track hotfixes/BJVEP933</td><td align="left">检出远程分支hotfixes/BJVEP933并创建本地跟踪分支</td></tr><tr><td align="left">git checkout v2.0</td><td align="left">检出版本v2.0</td></tr><tr><td align="left">git checkout -b devel origin/develop</td><td align="left">从远程分支develop创建新本地分支devel并检出</td></tr><tr><td align="left">git checkout – README</td><td align="left">检出head版本的README文件（可用于修改错误回退）</td></tr><tr><td align="left">git merge origin/master</td><td align="left">合并远程master分支至当前分支</td></tr><tr><td align="left">git cherry-pick ff44785404a8e</td><td align="left">合并提交ff44785404a8e的修改</td></tr><tr><td align="left">git push origin master</td><td align="left">将当前分支push到远程master分支</td></tr><tr><td align="left">git push origin :hotfixes/BJVEP933</td><td align="left">删除远程仓库的hotfixes/BJVEP933分支</td></tr><tr><td align="left">git push –tags</td><td align="left">把所有tag推送到远程仓库</td></tr><tr><td align="left">git fetch</td><td align="left">获取所有远程分支（不更新本地分支，另需merge）</td></tr><tr><td align="left">git fetch –prune</td><td align="left">获取所有原创分支并清除服务器上已删掉的分支</td></tr><tr><td align="left">git pull origin master</td><td align="left">获取远程分支master并merge到当前分支</td></tr><tr><td align="left">git mv README README2</td><td align="left">重命名文件README为README2</td></tr><tr><td align="left">git reset –hard HEAD</td><td align="left">将当前版本重置为HEAD（通常用于merge失败回退）</td></tr><tr><td align="left">git rebase</td><td align="left"></td></tr><tr><td align="left">git branch -d hotfixes/BJVEP933</td><td align="left">删除分支hotfixes/BJVEP933（本分支修改已合并到其他分支）</td></tr><tr><td align="left">git branch -D hotfixes/BJVEP933</td><td align="left">强制删除分支hotfixes/BJVEP933</td></tr><tr><td align="left">git ls-files</td><td align="left">列出git index包含的文件</td></tr><tr><td align="left">git show-branch</td><td align="left">图示当前分支历史</td></tr><tr><td align="left">git show-branch –all</td><td align="left">图示所有分支历史</td></tr><tr><td align="left">git whatchanged</td><td align="left">显示提交历史对应的文件修改</td></tr><tr><td align="left">git revert dfb02e6e4f2f7b573337763e5c0013802e392818</td><td align="left">撤销提交dfb02e6e4f2f7b573337763e5c0013802e392818</td></tr><tr><td align="left">git ls-tree HEAD</td><td align="left">内部命令：显示某个git对象</td></tr><tr><td align="left">git rev-parse v2.0</td><td align="left">内部命令：显示某个ref对于的SHA1 HASH</td></tr><tr><td align="left">git reflog</td><td align="left">显示所有提交，包括孤立节点</td></tr><tr><td align="left">git show HEAD@{5}</td><td align="left"></td></tr><tr><td align="left">git show master@{yesterday}</td><td align="left">显示master分支昨天的状态</td></tr><tr><td align="left">git log –pretty=format:’%h %s’ –graph</td><td align="left">图示提交日志</td></tr><tr><td align="left">git show HEAD~3</td><td align="left"></td></tr><tr><td align="left">git show -s –pretty=raw 2be7fcb476</td><td align="left"></td></tr><tr><td align="left">git stash</td><td align="left">暂存当前修改，将所有至为HEAD状态</td></tr><tr><td align="left">git stash list</td><td align="left">查看所有暂存</td></tr><tr><td align="left">git stash show -p stash@{0}</td><td align="left">参考第一次暂存</td></tr><tr><td align="left">git stash apply stash@{0}</td><td align="left">应用第一次暂存</td></tr><tr><td align="left">git grep “delete from”</td><td align="left">文件中搜索文本“delete from”</td></tr><tr><td align="left">git grep -e ‘ define’ –and -e SORT_DIRENT</td><td align="left"></td></tr><tr><td align="left">git gc</td><td align="left"></td></tr><tr><td align="left">git fsck</td><td align="left"></td></tr></tbody></table><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>创建分支</p><figure class="highlight armasm"><table><tbody><tr><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">branch </span>***</span><br></pre></td></tr></tbody></table></figure><p>切换分支</p><figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line">git checkout <span class="emphasis">***</span></span><br></pre></td></tr></tbody></table></figure><p>查看远程分支</p><figure class="highlight armasm"><table><tbody><tr><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">branch </span>-r</span><br></pre></td></tr></tbody></table></figure><p>查看本地分支</p><figure class="highlight ebnf"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attribute">git branch</span></span><br></pre></td></tr></tbody></table></figure><p>查看本地和远程分支</p><figure class="highlight armasm"><table><tbody><tr><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">branch </span>-a</span><br></pre></td></tr></tbody></table></figure><p>删除远程分支</p><figure class="highlight maxima"><table><tbody><tr><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> --<span class="built_in">delete</span>  ***</span><br><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> -d ***</span><br></pre></td></tr></tbody></table></figure><p><a href="https://gist.github.com/guweigang/9848271" target="_blank" rel="noopener">参考:https://gist.github.com/guweigang/9848271</a><br><br><a href="https://www.jianshu.com/p/d0d3e5d1813a" target="_blank" rel="noopener">参考:https://www.jianshu.com/p/d0d3e5d1813a</a></p><!-- rebuild by neat --><script>
