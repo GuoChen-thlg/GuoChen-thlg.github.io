@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux笔记</title>
+    <url>/2021/03/22/Linux%E7%AC%94%E8%AE%B0/24884/</url>
+    <content><![CDATA[<p>linux 入门笔记 记录操作过程</p><a id="more"></a><h1 id="安装-node"><a href="#安装-node" class="headerlink" title="安装 node"></a>安装 node</h1><h2 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h2><p><a href="https://nodejs.org/zh-cn/download/" target="_blank" rel="noopener">Node 官网下载地址</a></p><figure class="highlight crmsh"><table><tbody><tr><td class="code"><pre><span class="line">wegt https://nodejs.org/dist/v14.<span class="number">16.0</span>/<span class="keyword">node</span><span class="title">-v14</span>.<span class="number">16.0</span>-linux-x64.tar.xz</span><br></pre></td></tr></tbody></table></figure><p>或者把安装包下载到本地 再上传到服务器</p><h2 id="解压安装包"><a href="#解压安装包" class="headerlink" title="解压安装包"></a>解压安装包</h2><figure class="highlight crmsh"><table><tbody><tr><td class="code"><pre><span class="line">tar -xvf <span class="keyword">node</span><span class="title">-v14</span>.<span class="number">16.0</span>-linux-x64.tar.xz</span><br></pre></td></tr></tbody></table></figure><h2 id="重命名安装目录"><a href="#重命名安装目录" class="headerlink" title="重命名安装目录"></a>重命名安装目录</h2><p>将解压文件移动到你想要安装的文件夹下</p><figure class="highlight crmsh"><table><tbody><tr><td class="code"><pre><span class="line">mv <span class="keyword">node</span><span class="title">-v14</span>.<span class="number">16.0</span>-linux-x64/  /usr/local/<span class="keyword">node</span><span class="title"></span></span><br></pre></td></tr></tbody></table></figure><h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>此处为解压文件 node 的 bin 文件夹路径</p><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"export PATH=<span class="variable">$PATH</span>:/usr/local/node/bin"</span> &gt;&gt; /etc/profile</span><br></pre></td></tr></tbody></table></figure><p>使环境变量生效</p><figure class="highlight gradle"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">source</span> <span class="regexp">/etc/</span>profile</span><br></pre></td></tr></tbody></table></figure><h2 id="检查安装结果"><a href="#检查安装结果" class="headerlink" title="检查安装结果"></a>检查安装结果</h2><figure class="highlight crmsh"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">node</span> <span class="title">-v</span></span><br><span class="line">npm -v</span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>pm2命令</title>
     <url>/2021/03/20/pm2%E5%91%BD%E4%BB%A4/18509/</url>
     <content><![CDATA[<p>pm2 命令 速查</p><a id="more"></a><p>用法:</p><pre><code>pm2 [cmd] app</code></pre><p>选项:</p><pre><code>-V, --version                                                输出版本号
@@ -154,8 +184,7 @@ flush [api]                                                  冲洗日志</code>
           });
       </script>]]></content>
       <categories>
-        <category>备忘</category>
-        <category>速查</category>
+        <category>备忘录</category>
       </categories>
       <tags>
         <tag>pm2</tag>
@@ -333,11 +362,9 @@ flush [api]                                                  冲洗日志</code>
           });
       </script>]]></content>
       <categories>
-        <category>Node</category>
-        <category>koa</category>
+        <category>Koa</category>
       </categories>
       <tags>
-        <tag>koa</tag>
         <tag>跨域</tag>
       </tags>
   </entry>
@@ -515,12 +542,12 @@ flush [api]                                                  冲洗日志</code>
           });
       </script>]]></content>
       <categories>
-        <category>Koa</category>
+        <category>koa</category>
       </categories>
       <tags>
-        <tag>Koa-body</tag>
-        <tag>上传文件</tag>
         <tag>node</tag>
+        <tag>koa-body</tag>
+        <tag>上传文件</tag>
       </tags>
   </entry>
   <entry>
@@ -546,12 +573,12 @@ flush [api]                                                  冲洗日志</code>
           });
       </script>]]></content>
       <categories>
-        <category>koa</category>
+        <category>Koa</category>
       </categories>
       <tags>
-        <tag>koa</tag>
         <tag>node</tag>
         <tag>koa-body</tag>
+        <tag>koa</tag>
       </tags>
   </entry>
   <entry>
