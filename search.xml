@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Chrome无法打开网页</title>
+    <url>/2021/04/02/Chrome%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5/17786/</url>
+    <content><![CDATA[<p>今天突然 Chrome 打不开任何网页，而其他浏览器依旧可以打开，这种体验非常不好 ……</p><a id="more"></a><p>首先当前环境如下</p><ul><li>没有使用代理</li><li>电脑可以联网</li></ul><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>简单粗暴 重置网络</p><figure class="highlight ebnf"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attribute">netsh winsock reset</span></span><br></pre></td></tr></tbody></table></figure><p>之后重启开机后，已经可以打开网页了</p><!-- rebuild by neat --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Net</category>
+      </categories>
+      <tags>
+        <tag>chrome</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx反向代理apache2+HPH</title>
     <url>/2021/03/26/nginx%E4%BB%A3%E7%90%86apache2-HPH/64100/</url>
     <content><![CDATA[<img src="/2021/03/26/nginx%E4%BB%A3%E7%90%86apache2-HPH/64100/nginx.jpg"> &gt; 背景：在公司部署项目的时候遇到端口冲突，原本服务器上跑着一个 php 项目使用的是 apache2 。<br>&gt; 既然我使用nginx进行node反向代理，我也可以反向代理 apache2<a id="more"></a><h2 id="解除-443-端口占用"><a href="#解除-443-端口占用" class="headerlink" title="解除 443 端口占用"></a>解除 443 端口占用</h2><p>修改 apache2 配置文件 /etc/apache2/ports.conf</p><p>将端口修改</p><figure class="highlight xml"><table><tbody><tr><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">IfModule</span> <span class="attr">ssl_module</span>&gt;</span></span><br><span class="line">	Listen 444</span><br><span class="line"><span class="tag">&lt;/<span class="name">IfModule</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">IfModule</span> <span class="attr">mod_gnutls.c</span>&gt;</span></span><br><span class="line">	Listen 444</span><br><span class="line"><span class="tag">&lt;/<span class="name">IfModule</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></tbody></table></figure><p>修改虚拟机配置文件 在 /etc/apache2/sites-enabled 下</p><figure class="highlight erlang"><table><tbody><tr><td class="code"><pre><span class="line">...</span><br><span class="line">&lt;VirtualHost _default_:<span class="number">444</span>&gt;</span><br><span class="line">...</span><br></pre></td></tr></tbody></table></figure><p>修改完成后 重启 apache2</p><figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line"><span class="regexp">/etc/i</span>nit.d<span class="regexp">/apache2  restart</span></span><br></pre></td></tr></tbody></table></figure><p>检查项目是否可以跑通 （加上端口号）</p><h2 id="设置-nginx-反向代理"><a href="#设置-nginx-反向代理" class="headerlink" title="设置 nginx 反向代理"></a>设置 nginx 反向代理</h2><p>在 /etc/nginx/sites-available 目录下创建一个配置文件<br>复制默认文件的内容进行修改</p><figure class="highlight properties"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">...</span></span><br><span class="line"><span class="attr">server</span> <span class="string">{</span></span><br><span class="line">  <span class="attr">...</span></span><br><span class="line">	<span class="attr">listen</span> <span class="string">443 ssl default_server;</span></span><br><span class="line">	<span class="attr">ssl_certificate</span>  <span class="string">/etc/nginx/cert/xxx.pem;</span></span><br><span class="line">	<span class="attr">ssl_certificate_key</span>  <span class="string">/etc/nginx/cert/xxx.key;</span></span><br><span class="line">	<span class="attr">server_name</span>  <span class="string">xxx.com;</span></span><br><span class="line">	<span class="attr">location</span> <span class="string">/ {</span></span><br><span class="line">    <span class="attr">...</span></span><br><span class="line">		<span class="attr">proxy_set_header</span> <span class="string">Host $host;</span></span><br><span class="line">		<span class="attr">proxy_set_header</span> <span class="string">X-Real-IP $remote_addr;</span></span><br><span class="line">		<span class="attr">proxy_pass</span>  <span class="string">https://xxx.xxx.xxx.xx:444;</span></span><br><span class="line">		<span class="attr">index</span> <span class="string">index.php index.html index.htm index.nginx-debian.html;</span></span><br><span class="line">	<span class="attr">}</span></span><br><span class="line"><span class="attr">}</span></span><br><span class="line"><span class="attr">...</span></span><br></pre></td></tr></tbody></table></figure><p>设置软连接</p><figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line">ln -s <span class="regexp">/etc/</span>nginx<span class="regexp">/sites-available/</span>xxx.conf <span class="regexp">/etc/</span>nginx<span class="regexp">/sites-enabled/</span></span><br></pre></td></tr></tbody></table></figure><p>重启 nginx</p><figure class="highlight ebnf"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attribute">nginx -s reload</span></span><br></pre></td></tr></tbody></table></figure><p>访问项目 查看是否反向代理成功</p><!-- rebuild by neat --><script>
@@ -604,9 +633,9 @@ flush [api]                                                  冲洗日志</code>
         <category>koa</category>
       </categories>
       <tags>
+        <tag>node</tag>
         <tag>koa-body</tag>
         <tag>上传文件</tag>
-        <tag>node</tag>
       </tags>
   </entry>
   <entry>
@@ -635,8 +664,8 @@ flush [api]                                                  冲洗日志</code>
         <category>Koa</category>
       </categories>
       <tags>
-        <tag>koa-body</tag>
         <tag>node</tag>
+        <tag>koa-body</tag>
         <tag>koa</tag>
       </tags>
   </entry>

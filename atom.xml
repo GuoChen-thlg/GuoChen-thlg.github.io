@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://guochen-thlg.github.io/"/>
-  <updated>2021-03-26T03:07:56.149Z</updated>
+  <updated>2021-04-02T02:00:22.577Z</updated>
   <id>https://guochen-thlg.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Chrome无法打开网页</title>
+    <link href="https://guochen-thlg.github.io/2021/04/02/Chrome%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5/17786/"/>
+    <id>https://guochen-thlg.github.io/2021/04/02/Chrome%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5/17786/</id>
+    <published>2021-04-02T01:51:49.000Z</published>
+    <updated>2021-04-02T02:00:22.577Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天突然 Chrome 打不开任何网页，而其他浏览器依旧可以打开，这种体验非常不好 ……</p><a id="more"></a><p>首先当前环境如下</p><ul><li>没有使用代理</li><li>电脑可以联网</li></ul><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>简单粗暴 重置网络</p><figure class="highlight ebnf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">netsh winsock reset</span></span><br></pre></td></tr></tbody></table></figure><p>之后重启开机后，已经可以打开网页了</p><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天突然 Chrome 打不开任何网页，而其他浏览器依旧可以打开，这种体验非常不好 ……&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Net" scheme="https://GuoChen-thlg.github.io/categories/Net/"/>
+    
+    
+      <category term="chrome" scheme="https://GuoChen-thlg.github.io/tags/chrome/"/>
+    
+  </entry>
   
   <entry>
     <title>nginx反向代理apache2+HPH</title>
@@ -404,11 +427,11 @@
       <category term="koa" scheme="https://GuoChen-thlg.github.io/categories/koa/"/>
     
     
+      <category term="node" scheme="https://GuoChen-thlg.github.io/tags/node/"/>
+    
       <category term="koa-body" scheme="https://GuoChen-thlg.github.io/tags/koa-body/"/>
     
       <category term="上传文件" scheme="https://GuoChen-thlg.github.io/tags/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/"/>
-    
-      <category term="node" scheme="https://GuoChen-thlg.github.io/tags/node/"/>
     
   </entry>
   
@@ -431,9 +454,9 @@
       <category term="Koa" scheme="https://GuoChen-thlg.github.io/categories/Koa/"/>
     
     
-      <category term="koa-body" scheme="https://GuoChen-thlg.github.io/tags/koa-body/"/>
-    
       <category term="node" scheme="https://GuoChen-thlg.github.io/tags/node/"/>
+    
+      <category term="koa-body" scheme="https://GuoChen-thlg.github.io/tags/koa-body/"/>
     
       <category term="koa" scheme="https://GuoChen-thlg.github.io/tags/koa/"/>
     
