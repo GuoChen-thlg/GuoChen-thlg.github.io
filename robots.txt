@@ -1,0 +1,16 @@
+# hexo robots.txt
+User-agent: *
+
+Allow: /
+Allow: /archives/ 
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /lib/
+Disallow: /dist/
+Disallow: /fonts/
+Disallow: /live2dw/
+
+
+Sitemap: https://thlg.ml/sitemap.xml
+Sitemap: https://thlg.ml/baidusitemap.xml
