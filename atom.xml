@@ -309,7 +309,7 @@
     <link href="https://thlg.ml/2021/02/27/Koa%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/57978/"/>
     <id>https://thlg.ml/2021/02/27/Koa%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/57978/</id>
     <published>2021-02-27T11:16:31.000Z</published>
-    <updated>2021-04-11T03:14:57.001Z</updated>
+    <updated>2021-04-11T03:18:05.991Z</updated>
     
     <content type="html"><![CDATA[<p>在开发插件的过程中遇到了接口请求不同,显示跨域错误。<br><br>场景：我在本地开发启动了三个项目,插件部分请求服务器端出现跨域,我的服务器端是用 Koa 框架开发的。</p><a id="more"></a><h3 id="简单粗暴解决跨域"><a href="#简单粗暴解决跨域" class="headerlink" title="简单粗暴解决跨域"></a>简单粗暴解决跨域</h3><p>自己写一个中间件来判断哪些路由需要跨域</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">ctx, next</span>) </span>{</span><br><span class="line"><span class="comment">// Allow cross-domain whitelist</span></span><br><span class="line"><span class="built_in">console</span>.log(ctx.request.url)</span><br><span class="line"><span class="keyword">if</span> (<span class="regexp">/^\/plug-in\/|^\/expose-api\//</span>.test(ctx.request.url)) {</span><br><span class="line"><span class="comment">// Allow requests for all domains</span></span><br><span class="line">ctx.set(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'*'</span>)</span><br><span class="line">}</span><br><span class="line"><span class="keyword">await</span> next()</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><h3 id="安装-中间件"><a href="#安装-中间件" class="headerlink" title="安装 中间件"></a>安装 中间件</h3><figure class="highlight coffeescript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> i koa2-cors -S</span><br></pre></td></tr></tbody></table></figure><p>使用</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cors=<span class="built_in">require</span>(<span class="string">"koa2-cors"</span>)</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line">app.use(cors())</span><br><span class="line"></span><br><span class="line"><span class="comment">//...</span></span><br></pre></td></tr></tbody></table></figure><p><a href="https://github.com/zadzbw/koa2-cors#readme" target="_blank" rel="noopener">koa2-cors Github</a></p><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
@@ -320,7 +320,7 @@
     </summary>
     
     
-      <category term="Koas" scheme="https://thlg.ml/categories/Koas/"/>
+      <category term="Koa" scheme="https://thlg.ml/categories/Koa/"/>
     
     
       <category term="跨域" scheme="https://thlg.ml/tags/%E8%B7%A8%E5%9F%9F/"/>
@@ -459,7 +459,7 @@
     <link href="https://thlg.ml/2021/01/22/koa-body%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/4437/"/>
     <id>https://thlg.ml/2021/01/22/koa-body%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/4437/</id>
     <published>2021-01-22T13:53:58.000Z</published>
-    <updated>2021-04-11T03:14:12.723Z</updated>
+    <updated>2021-04-11T03:18:04.065Z</updated>
     
     <content type="html"><![CDATA[<p>如何使用ndoe实现上传文件，在使用koa 开发过程中，使用koa-body 不仅可以实现上传文件，还可以解析 POST 参数</p><a id="more"></a><p>配置如下</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">app.use(</span><br><span class="line">koaBody({</span><br><span class="line">multipart: <span class="literal">true</span>, <span class="comment">// 支持上传文件</span></span><br><span class="line">patchNode: <span class="literal">true</span>,</span><br><span class="line">formidable: {</span><br><span class="line">uploadDir: path.join(__dirname, <span class="string">'uploads/'</span>), <span class="comment">// 上传文件路径</span></span><br><span class="line">keepExtensi·  ons: <span class="literal">true</span>, <span class="comment">// 保持文件后缀</span></span><br><span class="line">maxFieldsSize: <span class="number">5</span> * <span class="number">1024</span> * <span class="number">1024</span>, <span class="comment">// 文件上传大小</span></span><br><span class="line">onFileBegin: <span class="function">(<span class="params">name, file</span>) =&gt;</span> {</span><br><span class="line"><span class="comment">// 文件上传前的设置</span></span><br><span class="line"><span class="keyword">let</span> shop = name.split(<span class="string">'|'</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">let</span> type = name.split(<span class="string">'|'</span>)[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">let</span> ext = file.name.split(<span class="string">'.'</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 判断保存路径是否存在，不存在则创建文件夹</span></span><br><span class="line"><span class="keyword">let</span> dir = path.join(__dirname, <span class="string">`uploads/<span class="subst">${shop}</span>`</span>)</span><br><span class="line">checkDirExist(dir)</span><br><span class="line">dir = path.join(__dirname, <span class="string">`uploads/<span class="subst">${shop}</span>/<span class="subst">${type}</span>`</span>)</span><br><span class="line">        checkDirExist(dir)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 图片保存的实际路径</span></span><br><span class="line">file.path = <span class="string">`<span class="subst">${dir}</span>\\<span class="subst">${file.name}</span>`</span></span><br><span class="line">},</span><br><span class="line">},</span><br><span class="line">})</span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkDirExist</span> (<span class="params">dir</span>) </span>{</span><br><span class="line"><span class="keyword">if</span> (!fs.existsSync(dir)) { fs.mkdirSync(dir) }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
@@ -470,14 +470,14 @@
     </summary>
     
     
-      <category term="Koas" scheme="https://thlg.ml/categories/Koas/"/>
+      <category term="Koa" scheme="https://thlg.ml/categories/Koa/"/>
     
-    
-      <category term="node" scheme="https://thlg.ml/tags/node/"/>
     
       <category term="koa-body" scheme="https://thlg.ml/tags/koa-body/"/>
     
       <category term="上传文件" scheme="https://thlg.ml/tags/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/"/>
+    
+      <category term="node" scheme="https://thlg.ml/tags/node/"/>
     
   </entry>
   
@@ -486,7 +486,7 @@
     <link href="https://thlg.ml/2021/01/22/koa-body415/41372/"/>
     <id>https://thlg.ml/2021/01/22/koa-body415/41372/</id>
     <published>2021-01-22T13:44:46.000Z</published>
-    <updated>2021-04-11T03:11:56.766Z</updated>
+    <updated>2021-04-11T03:17:58.135Z</updated>
     
     <content type="html"><![CDATA[<p>使用 Koa 写了个插件，要上传文件时 使用了 koa-body 在 POST 提交参数时，总是报错 415 unsupported media type 苦思不得其解<br>在痛苦了半天的结果下，最终找到了问题所在</p><a id="more"></a><p>主要是开启了 <code>encoding: 'gzip'</code> 这个配置，注释后发现可以运行，完美解决。</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.use(</span><br><span class="line">koaBody({</span><br><span class="line">multipart: <span class="literal">true</span>, <span class="comment">// 支持上传文件</span></span><br><span class="line">patchNode: <span class="literal">true</span>,</span><br><span class="line"><span class="comment">// encoding: 'gzip',</span></span><br><span class="line">})</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
@@ -497,12 +497,12 @@
     </summary>
     
     
-      <category term="Koas" scheme="https://thlg.ml/categories/Koas/"/>
+      <category term="Koa" scheme="https://thlg.ml/categories/Koa/"/>
     
-    
-      <category term="node" scheme="https://thlg.ml/tags/node/"/>
     
       <category term="koa-body" scheme="https://thlg.ml/tags/koa-body/"/>
+    
+      <category term="node" scheme="https://thlg.ml/tags/node/"/>
     
       <category term="koa" scheme="https://thlg.ml/tags/koa/"/>
     
