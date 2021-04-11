@@ -127,9 +127,9 @@
       <category term="Node" scheme="https://thlg.ml/categories/Node/"/>
     
     
-      <category term="node" scheme="https://thlg.ml/tags/node/"/>
-    
       <category term="moule" scheme="https://thlg.ml/tags/moule/"/>
+    
+      <category term="node" scheme="https://thlg.ml/tags/node/"/>
     
   </entry>
   
@@ -486,7 +486,7 @@
     <link href="https://thlg.ml/2021/01/22/koa-body415/41372/"/>
     <id>https://thlg.ml/2021/01/22/koa-body415/41372/</id>
     <published>2021-01-22T13:44:46.000Z</published>
-    <updated>2021-03-24T01:09:30.002Z</updated>
+    <updated>2021-04-11T03:11:56.766Z</updated>
     
     <content type="html"><![CDATA[<p>使用 Koa 写了个插件，要上传文件时 使用了 koa-body 在 POST 提交参数时，总是报错 415 unsupported media type 苦思不得其解<br>在痛苦了半天的结果下，最终找到了问题所在</p><a id="more"></a><p>主要是开启了 <code>encoding: 'gzip'</code> 这个配置，注释后发现可以运行，完美解决。</p><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.use(</span><br><span class="line">koaBody({</span><br><span class="line">multipart: <span class="literal">true</span>, <span class="comment">// 支持上传文件</span></span><br><span class="line">patchNode: <span class="literal">true</span>,</span><br><span class="line"><span class="comment">// encoding: 'gzip',</span></span><br><span class="line">})</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
@@ -497,7 +497,7 @@
     </summary>
     
     
-      <category term="Koa" scheme="https://thlg.ml/categories/Koa/"/>
+      <category term="Koas" scheme="https://thlg.ml/categories/Koas/"/>
     
     
       <category term="node" scheme="https://thlg.ml/tags/node/"/>

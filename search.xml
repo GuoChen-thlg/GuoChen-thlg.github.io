@@ -142,8 +142,8 @@
         <category>Node</category>
       </categories>
       <tags>
-        <tag>node</tag>
         <tag>moule</tag>
+        <tag>node</tag>
       </tags>
   </entry>
   <entry>
@@ -719,7 +719,7 @@ flush [api]                                                  冲洗日志</code>
           });
       </script>]]></content>
       <categories>
-        <category>Koa</category>
+        <category>Koas</category>
       </categories>
       <tags>
         <tag>node</tag>
