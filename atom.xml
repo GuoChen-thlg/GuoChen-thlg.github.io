@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.thlg.ml/"/>
-  <updated>2021-04-07T07:05:28.527Z</updated>
+  <updated>2021-04-21T06:55:51.870Z</updated>
   <id>https://www.thlg.ml/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>echarts自适应方案</title>
+    <link href="https://www.thlg.ml/2021/04/21/echarts%E8%87%AA%E9%80%82%E5%BA%94%E6%96%B9%E6%A1%88/36342/"/>
+    <id>https://www.thlg.ml/2021/04/21/echarts%E8%87%AA%E9%80%82%E5%BA%94%E6%96%B9%E6%A1%88/36342/</id>
+    <published>2021-04-21T06:16:34.000Z</published>
+    <updated>2021-04-21T06:55:51.870Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2021/04/21/echarts%E8%87%AA%E9%80%82%E5%BA%94%E6%96%B9%E6%A1%88/36342/echarts.jpg" alt="echarts"><br>在项目中使用了 vue-echarts 虽然提供了 autoresize 用来自适应 但有时侯我们的窗体根本不会改变大小，当我们打开侧边栏时，我们的 DOM 已经发生了大小变化，这个时候无法响应式的做出变化。<br><br>在现在的开发环境中往往需要自适应，但 Echarts 恰恰要我们设置一个宽高，这是非常不方便的</p><a id="more"></a><h2 id="我们要实现的需求"><a href="#我们要实现的需求" class="headerlink" title="我们要实现的需求"></a>我们要实现的需求</h2><ol><li>自适应大小</li><li>保持宽高比</li><li>无需精确设置大小</li></ol><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们使用内边距来实现 宽高比例保持不变.<br><br>通过监听 object 元素中 window 的 resize 事件来触发 echarts 的 resize 事件.<br><br>这里使用的是 vue-echarts 所以还要改变 x-vue-echarts 的样式 才能使 echarts 得到确切的大小尺寸.</p><p><img src="/2021/04/21/echarts%E8%87%AA%E9%80%82%E5%BA%94%E6%96%B9%E6%A1%88/36342/vue3.webp" alt="vue3"></p><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"scss"</span>&gt;</span></span><br><span class="line">x-vue-echarts {</span><br><span class="line">position: absolute;</span><br><span class="line">top: 0;</span><br><span class="line">left: 0;</span><br><span class="line">right: 0;</span><br><span class="line">bottom: 0;</span><br><span class="line">}</span><br><span class="line"><span class="css"><span class="selector-class">.filling-object-el</span> {</span></span><br><span class="line">position: absolute;</span><br><span class="line">top: 0;</span><br><span class="line">left: 0;</span><br><span class="line">width: 100%;</span><br><span class="line">height: 100%;</span><br><span class="line">z-index: -9999;</span><br><span class="line">}</span><br><span class="line"><span class="css"><span class="selector-class">.container</span> {</span></span><br><span class="line">position: relative;</span><br><span class="line">width: 50%;</span><br><span class="line"><span class="css">&amp;<span class="selector-pseudo">::after</span> {</span></span><br><span class="line">content: '';</span><br><span class="line">display: block;</span><br><span class="line">width: 100%;</span><br><span class="line"><span class="css"><span class="comment">/* 这里调节宽高比 可以使用媒体查询控制 */</span></span></span><br><span class="line">padding-bottom: 100%;</span><br><span class="line"><span class="css"><span class="keyword">@media</span> screen {</span></span><br><span class="line"><span class="css"><span class="comment">/* ... */</span></span></span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">object</span></span></span><br><span class="line"><span class="tag"><span class="attr">data</span>=<span class="string">"about:blank"</span></span></span><br><span class="line"><span class="tag"><span class="attr">class</span>=<span class="string">"filling-object-el"</span></span></span><br><span class="line"><span class="tag"><span class="attr">ref</span>=<span class="string">"filling"</span></span></span><br><span class="line"><span class="tag"><span class="attr">type</span>=<span class="string">"text/html"</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">v-chart</span> <span class="attr">:ref</span>=<span class="string">"chart"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="comment">// ....</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent({</span></span><br><span class="line"><span class="javascript">  setup: <span class="function"><span class="params">()</span> =&gt;</span> {</span></span><br><span class="line"><span class="actionscript">     <span class="comment">// ....</span></span></span><br><span class="line"><span class="actionscript"><span class="keyword">const</span> charts = reactive&lt;ECharts[]&gt;([])</span></span><br><span class="line"><span class="javascript"><span class="keyword">const</span> chart = <span class="function">(<span class="params">el: ECharts</span>) =&gt;</span> {</span></span><br><span class="line">      if (el) {</span><br><span class="line">        charts.push(el)</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line"><span class="actionscript">    <span class="keyword">const</span> filling = ref&lt;HTMLObjectElement | <span class="literal">null</span>&gt;(<span class="literal">null</span>)</span></span><br><span class="line"><span class="javascript">    onMounted(<span class="function"><span class="params">()</span> =&gt;</span> {</span></span><br><span class="line"><span class="actionscript">      filling.value?.contentWindow?.addEventListener(<span class="string">'resize'</span>, () =&gt; {</span></span><br><span class="line"><span class="javascript">      charts.forEach(<span class="function">(<span class="params">el</span>) =&gt;</span> {</span></span><br><span class="line">        el.resize()</span><br><span class="line">      })</span><br><span class="line">    })</span><br><span class="line">    })</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="keyword">return</span> {</span></span><br><span class="line">      chart</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line">})</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/2021/04/21/echarts%E8%87%AA%E9%80%82%E5%BA%94%E6%96%B9%E6%A1%88/36342/echarts.jpg&quot; alt=&quot;echarts&quot;&gt;&lt;br&gt;在项目中使用了 vue-echarts 虽然提供了 autoresize 用来自适应 但有时侯我们的窗体根本不会改变大小，当我们打开侧边栏时，我们的 DOM 已经发生了大小变化，这个时候无法响应式的做出变化。&lt;br&gt;&lt;br&gt;在现在的开发环境中往往需要自适应，但 Echarts 恰恰要我们设置一个宽高，这是非常不方便的&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Echarts" scheme="https://www.thlg.ml/categories/Echarts/"/>
+    
+    
+      <category term="vue" scheme="https://www.thlg.ml/tags/vue/"/>
+    
+      <category term="echarts" scheme="https://www.thlg.ml/tags/echarts/"/>
+    
+      <category term="vue-echarts" scheme="https://www.thlg.ml/tags/vue-echarts/"/>
+    
+  </entry>
   
   <entry>
     <title>GET和POST的区别</title>
@@ -473,11 +500,11 @@
       <category term="Koa" scheme="https://www.thlg.ml/categories/Koa/"/>
     
     
-      <category term="node" scheme="https://www.thlg.ml/tags/node/"/>
-    
       <category term="koa-body" scheme="https://www.thlg.ml/tags/koa-body/"/>
     
       <category term="上传文件" scheme="https://www.thlg.ml/tags/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6/"/>
+    
+      <category term="node" scheme="https://www.thlg.ml/tags/node/"/>
     
   </entry>
   
@@ -500,9 +527,9 @@
       <category term="Koa" scheme="https://www.thlg.ml/categories/Koa/"/>
     
     
-      <category term="node" scheme="https://www.thlg.ml/tags/node/"/>
-    
       <category term="koa-body" scheme="https://www.thlg.ml/tags/koa-body/"/>
+    
+      <category term="node" scheme="https://www.thlg.ml/tags/node/"/>
     
       <category term="koa" scheme="https://www.thlg.ml/tags/koa/"/>
     

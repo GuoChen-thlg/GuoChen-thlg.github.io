@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>echarts自适应方案</title>
+    <url>/2021/04/21/echarts%E8%87%AA%E9%80%82%E5%BA%94%E6%96%B9%E6%A1%88/36342/</url>
+    <content><![CDATA[<p><img src="/2021/04/21/echarts%E8%87%AA%E9%80%82%E5%BA%94%E6%96%B9%E6%A1%88/36342/echarts.jpg" alt="echarts"><br>在项目中使用了 vue-echarts 虽然提供了 autoresize 用来自适应 但有时侯我们的窗体根本不会改变大小，当我们打开侧边栏时，我们的 DOM 已经发生了大小变化，这个时候无法响应式的做出变化。<br><br>在现在的开发环境中往往需要自适应，但 Echarts 恰恰要我们设置一个宽高，这是非常不方便的</p><a id="more"></a><h2 id="我们要实现的需求"><a href="#我们要实现的需求" class="headerlink" title="我们要实现的需求"></a>我们要实现的需求</h2><ol><li>自适应大小</li><li>保持宽高比</li><li>无需精确设置大小</li></ol><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我们使用内边距来实现 宽高比例保持不变.<br><br>通过监听 object 元素中 window 的 resize 事件来触发 echarts 的 resize 事件.<br><br>这里使用的是 vue-echarts 所以还要改变 x-vue-echarts 的样式 才能使 echarts 得到确切的大小尺寸.</p><p><img src="/2021/04/21/echarts%E8%87%AA%E9%80%82%E5%BA%94%E6%96%B9%E6%A1%88/36342/vue3.webp" alt="vue3"></p><figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"scss"</span>&gt;</span></span><br><span class="line">	x-vue-echarts {</span><br><span class="line">		position: absolute;</span><br><span class="line">		top: 0;</span><br><span class="line">		left: 0;</span><br><span class="line">		right: 0;</span><br><span class="line">		bottom: 0;</span><br><span class="line">	}</span><br><span class="line"><span class="css">	<span class="selector-class">.filling-object-el</span> {</span></span><br><span class="line">		position: absolute;</span><br><span class="line">		top: 0;</span><br><span class="line">		left: 0;</span><br><span class="line">		width: 100%;</span><br><span class="line">		height: 100%;</span><br><span class="line">		z-index: -9999;</span><br><span class="line">	}</span><br><span class="line"><span class="css">	<span class="selector-class">.container</span> {</span></span><br><span class="line">		position: relative;</span><br><span class="line">		width: 50%;</span><br><span class="line"><span class="css">		&amp;<span class="selector-pseudo">::after</span> {</span></span><br><span class="line">			content: '';</span><br><span class="line">			display: block;</span><br><span class="line">			width: 100%;</span><br><span class="line"><span class="css">			<span class="comment">/* 这里调节宽高比 可以使用媒体查询控制 */</span></span></span><br><span class="line">			padding-bottom: 100%;</span><br><span class="line"><span class="css">			<span class="keyword">@media</span> screen {</span></span><br><span class="line"><span class="css">				<span class="comment">/* ... */</span></span></span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">object</span></span></span><br><span class="line"><span class="tag">		<span class="attr">data</span>=<span class="string">"about:blank"</span></span></span><br><span class="line"><span class="tag">		<span class="attr">class</span>=<span class="string">"filling-object-el"</span></span></span><br><span class="line"><span class="tag">		<span class="attr">ref</span>=<span class="string">"filling"</span></span></span><br><span class="line"><span class="tag">		<span class="attr">type</span>=<span class="string">"text/html"</span></span></span><br><span class="line"><span class="tag">	&gt;</span><span class="tag">&lt;/<span class="name">object</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">v-chart</span> <span class="attr">:ref</span>=<span class="string">"chart"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">		<span class="comment">// ....</span></span></span><br><span class="line"><span class="javascript">	<span class="keyword">export</span> <span class="keyword">default</span> defineComponent({</span></span><br><span class="line"><span class="javascript">	  setup: <span class="function"><span class="params">()</span> =&gt;</span> {</span></span><br><span class="line"><span class="actionscript">	     <span class="comment">// ....</span></span></span><br><span class="line"><span class="actionscript">			<span class="keyword">const</span> charts = reactive&lt;ECharts[]&gt;([])</span></span><br><span class="line"><span class="javascript">			<span class="keyword">const</span> chart = <span class="function">(<span class="params">el: ECharts</span>) =&gt;</span> {</span></span><br><span class="line">			      if (el) {</span><br><span class="line">			        charts.push(el)</span><br><span class="line">			      }</span><br><span class="line">			    }</span><br><span class="line"><span class="actionscript">	    <span class="keyword">const</span> filling = ref&lt;HTMLObjectElement | <span class="literal">null</span>&gt;(<span class="literal">null</span>)</span></span><br><span class="line"><span class="javascript">	    onMounted(<span class="function"><span class="params">()</span> =&gt;</span> {</span></span><br><span class="line"><span class="actionscript">	      filling.value?.contentWindow?.addEventListener(<span class="string">'resize'</span>, () =&gt; {</span></span><br><span class="line"><span class="javascript">	      charts.forEach(<span class="function">(<span class="params">el</span>) =&gt;</span> {</span></span><br><span class="line">	        el.resize()</span><br><span class="line">	      })</span><br><span class="line">	    })</span><br><span class="line">	    })</span><br><span class="line"></span><br><span class="line"><span class="actionscript">	    <span class="keyword">return</span> {</span></span><br><span class="line">	      chart</span><br><span class="line">	    }</span><br><span class="line">		}</span><br><span class="line">	})</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Echarts</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+        <tag>echarts</tag>
+        <tag>vue-echarts</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GET和POST的区别</title>
     <url>/2021/04/07/GET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB/30689/</url>
     <content><![CDATA[<p><img src="/2021/04/07/GET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB/30689/get-post.png" alt="get VS post"><br>相信小伙伴在面试中常常遇到面试官问道 GET 和 POST 两种请求方式有什么区别，</p><a id="more"></a><p>相信大家马上就能想到</p><blockquote><p>GET 请求可被缓存<br><br>GET 请求保留在浏览器历史记录中<br><br>GET 请求可被收藏为书签<br><br>GET 请求不应在处理敏感数据时使用<br><br>GET 请求有长度限制<br><br>GET 请求只应当用于取回数据（不修改）</p></blockquote><blockquote><p>POST 请求不会被缓存<br><br>POST 请求不会保留在浏览器历史记录中<br><br>POST 不能被收藏为书签<br><br>POST 请求对数据长度没要求<br></p></blockquote><p>轻轻松松答出了一个满意的答案 （以上答案参考w3school）</p><h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><ul><li>请求是否有主体 否</li><li>成功的响应是否有主体 是</li><li>安全 是</li><li>幂等 是</li><li>可缓存 是</li><li>HTML 表单是否支持 是</li></ul><h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><ul><li>请求是否有主体 是</li><li>成功的响应是否有主体 是</li><li>安全 否</li><li>幂等 否</li><li>可缓存 Only if freshness information is - included</li><li>HTML 表单是否支持 是</li></ul><p>关于有人说GET不安全会暴露参数数据而POST安全等</p><p>通过查阅<a href="https://tools.ietf.org/html/rfc7231#section-4.3.1" target="_blank" rel="noopener">http</a>文档中定义的安全方法得知 GET 方法被定义为安全方法</p><blockquote><h2 id="Safe-Methods"><a href="#Safe-Methods" class="headerlink" title="Safe Methods"></a>Safe Methods</h2><p>Request methods are considered “safe” if their defined semantics are<br>essentially read-only; i.e., the client does not request, and does<br>not expect, any state change on the origin server as a result of<br>applying a safe method to a target resource. Likewise, reasonable<br>use of a safe method is not expected to cause any harm, loss of<br>property, or unusual burden on the origin server.<br><br>This definition of safe methods does not prevent an implementation<br>from including behavior that is potentially harmful, that is not<br>entirely read-only, or that causes side effects while invoking a safe<br>method. What is important, however, is that the client did not<br>request that additional behavior and cannot be held accountable for<br>it. For example, most servers append request information to access<br>log files at the completion of every response, regardless of the<br>method, and that is considered safe even though the log storage might<br>become full and crash the server. Likewise, a safe request initiated<br>by selecting an advertisement on the Web will often have the side<br>effect of charging an advertising account.<br><br>Of the request methods defined by this specification, the GET, HEAD,<br>OPTIONS, and TRACE methods are defined to be safe.</p></blockquote><p>这里的安全是对服务器数据来说的，你通过GET 方法获取数据，无法对数据做出破坏行为，而POST则不会。但有时我们所表达的GET不安全其实说的是GET 的幂等 以及可留下浏览记录</p><p><img src="/2021/04/07/GET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB/30689/get-post1.png" alt="get <=> json <=> post"><br>例：<br><br>银行网站A，它以GET请求来完成银行转账的操作，如：<code>https://www.xxx.com/Transfer.php?toBankId=11&amp;money=1000</code><br>危险网站B，它里面有一段HTML的代码如下：</p><figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt; <span class="attr">img</span> <span class="attr">src</span>=<span class="string">https://www.xxx.com/Transfer.php?toBankId</span>=<span class="string">11&amp;money</span>=<span class="string">1000/</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><p>首先，你登录了银行网站A，然后访问危险网站B，噢，这时你会发现你的银行账户少了1000块……</p><p>例：<br><br>登录某网站 <code>https://xxx.com/login?user=admin&amp;password=admin</code><br>当别人浏览你的历史记录时就可以知道你的账号密码</p><!-- rebuild by neat --><script>
@@ -691,9 +722,9 @@ flush [api]                                                  冲洗日志</code>
         <category>Koa</category>
       </categories>
       <tags>
-        <tag>node</tag>
         <tag>koa-body</tag>
         <tag>上传文件</tag>
+        <tag>node</tag>
       </tags>
   </entry>
   <entry>
@@ -722,8 +753,8 @@ flush [api]                                                  冲洗日志</code>
         <category>Koa</category>
       </categories>
       <tags>
-        <tag>node</tag>
         <tag>koa-body</tag>
+        <tag>node</tag>
         <tag>koa</tag>
       </tags>
   </entry>
