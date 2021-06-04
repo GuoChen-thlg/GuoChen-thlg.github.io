@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.thlg.ml/"/>
-  <updated>2021-05-08T01:21:08.803Z</updated>
+  <updated>2021-06-04T06:25:44.265Z</updated>
   <id>https://www.thlg.ml/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在浏览器中动态加载字体</title>
+    <link href="https://www.thlg.ml/2021/06/04/%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E4%BD%93/11611/"/>
+    <id>https://www.thlg.ml/2021/06/04/%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E4%BD%93/11611/</id>
+    <published>2021-06-04T05:52:35.000Z</published>
+    <updated>2021-06-04T06:25:44.265Z</updated>
+    
+    <content type="html"><![CDATA[<p>正在开发一款用于个性化产品的应用，要实现这么一个功能，由用户上传字体文件并实现预览效果，那么要如何动态加载用户上传的文件…</p><a id="more"></a><h2 id="第一种由-CSS-加载实现"><a href="#第一种由-CSS-加载实现" class="headerlink" title="第一种由 CSS 加载实现"></a>第一种由 CSS 加载实现</h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 已获取到用户上传的文件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> url = (<span class="built_in">window</span>.URL || <span class="built_in">window</span>.webkitURL)[<span class="string">'createObjectURL'</span>](file)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> style = <span class="built_in">document</span>.createElement(<span class="string">'style'</span>)</span><br><span class="line">style.type = <span class="string">'text/css'</span></span><br><span class="line">style.innerText = <span class="string">`\n@font-face {</span></span><br><span class="line"><span class="string">                        font-family: '<span class="subst">${file.name.replace(<span class="regexp">/\./g</span>, <span class="string">'-'</span>)}</span>';</span></span><br><span class="line"><span class="string">                        src: url( '<span class="subst">${url}</span>' );}`</span></span><br><span class="line"><span class="built_in">document</span>.head.appendChild(style)</span><br></pre></td></tr></tbody></table></figure><h2 id="第二种由-FontFace-实现"><a href="#第二种由-FontFace-实现" class="headerlink" title="第二种由 FontFace 实现"></a>第二种由 FontFace 实现</h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = (<span class="built_in">window</span>.URL || <span class="built_in">window</span>.webkitURL)[<span class="string">'createObjectURL'</span>](file)</span><br><span class="line"><span class="keyword">const</span> font = <span class="keyword">new</span> FontFace(file.name.replace(<span class="regexp">/\./g</span>, <span class="string">'-'</span>), <span class="string">`url(<span class="subst">${url}</span>)`</span>)</span><br><span class="line">;<span class="function">(<span class="params"><span class="keyword">async</span> (</span>) =&gt;</span> {</span><br><span class="line"><span class="keyword">await</span> font.load()</span><br><span class="line"><span class="built_in">document</span>.fonts.add(font)</span><br><span class="line"><span class="keyword">this</span>.userUploadFileFont.name = file.name.replace(<span class="regexp">/\./g</span>, <span class="string">'-'</span>)</span><br><span class="line"><span class="keyword">this</span>.userUploadFileFont.file = file</span><br><span class="line">})()</span><br></pre></td></tr></tbody></table></figure><p>由于该功能是一个试验性的功能，我们应该结合在一起使用</p><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;正在开发一款用于个性化产品的应用，要实现这么一个功能，由用户上传字体文件并实现预览效果，那么要如何动态加载用户上传的文件…&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="JS" scheme="https://www.thlg.ml/categories/JS/"/>
+    
+    
+      <category term="font" scheme="https://www.thlg.ml/tags/font/"/>
+    
+  </entry>
   
   <entry>
     <title>vue多Tab栏切换点击左右滑动</title>
