@@ -165,8 +165,8 @@ document.querySelector(`#${id}`).src=canvas.toDataURL()
         <category>Echarts</category>
       </categories>
       <tags>
-        <tag>echarts</tag>
         <tag>vue</tag>
+        <tag>echarts</tag>
         <tag>vue-echarts</tag>
       </tags>
   </entry>
