@@ -1,13 +1,13 @@
-## <h1 align="center">🙋‍♂️Hey, welcome to my github 👏</h1>
+<h1 align="center">🙋‍♂️Hey, welcome to my github 👏</h1>
 
--   👨‍💻 I’m currently working on web development, such as JavaScript and Vue, etc.
--   📚 I’m currently learning everything about Frontend and Backend technologies 😅
--   💪🏼 Future Goals: Learn more technologies - Never stop creating new ideas.
+- 👨‍💻 I’m currently working on web development, such as JavaScript and Vue, etc.
+- 📚 I’m currently learning everything about Frontend and Backend technologies 😅
+- 💪🏼 Future Goals: Learn more technologies - Never stop creating new ideas.
 - 📘 Welcome to my [blog](https://www.thlg.ml) 👈👈
 - 💬 Ask me about anything, I am happy to help, only if the ball is in my court!
 - 📫 How to reach me **gc.thlg@gmail.com**
 
-
+---
 
 
 ## Language and tools
@@ -21,6 +21,7 @@
 ![Nodejs](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![Git](https://img.shields.io/badge/-Git-black?style=for-the-badge&logo=git)
 ![VSCode](https://img.shields.io/badge/vscode-blue.svg?style=for-the-badge&logo=visual-studio-code&labelColor=ffffff&logoColor=blue)
+
 ---
 
 
