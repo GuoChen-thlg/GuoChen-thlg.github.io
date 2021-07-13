@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>The term &#39;-Command&#39; is not recognized as the name of a cmdlet</title>
+    <url>/2021/07/13/The-term-Command-is-not-recognized-as-the-name-of-a-cmdlet/60363/</url>
+    <content><![CDATA[<p>某一天,启动项目后，项目无法正常启动，报错如下 ……</p><a id="more"></a><h2 id="报错截图"><a href="#报错截图" class="headerlink" title="报错截图"></a>报错截图</h2><p><img src="/2021/07/13/The-term-Command-is-not-recognized-as-the-name-of-a-cmdlet/60363/error.png" alt="报错截图"></p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>打开 VSCode 的设置文件（settings.json)</p><p>添加如下配置</p><figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">	<span class="comment">// ....</span></span><br><span class="line"></span><br><span class="line">	<span class="attr">"terminal.integrated.shell.windows"</span>: <span class="string">"C:\\Windows\\System32\\cmd.exe"</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p>或者</p><figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">	<span class="attr">"terminal.integrated.defaultProfile.windows"</span>: <span class="string">"C:\\Windows\\System32\\cmd.exe (migrated)"</span>,</span><br><span class="line">	<span class="attr">"terminal.integrated.profiles.windows"</span>: {</span><br><span class="line">		<span class="attr">"C:\\Windows\\System32\\cmd.exe (migrated)"</span>: {</span><br><span class="line">			<span class="attr">"path"</span>: <span class="string">"C:\\Windows\\System32\\cmd.exe"</span>,</span><br><span class="line">			<span class="attr">"args"</span>: []</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>报错的解决方案</category>
+      </categories>
+      <tags>
+        <tag>error</tag>
+        <tag>cmd</tag>
+        <tag>vscode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>textarea回车换行时文字遮挡解决方案</title>
     <url>/2021/06/24/textarea%E5%9B%9E%E8%BD%A6%E6%8D%A2%E8%A1%8C%E6%97%B6%E6%96%87%E5%AD%97%E9%81%AE%E6%8C%A1%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/48925/</url>
     <content><![CDATA[<p>在开发 canvas 画板时有个功能是这样的：<br><br>点击画板输入文字， 文字可拖动 、可编辑。但在可编辑这里出现一个问题，我使用 textarea 标签通过定位到 canvas 上实现可编辑文字。<br><br>因此 textarea 标签的大小是被限制的 ，同时也没有滚动条，但是在会车时，文字会发生上移，早成文字遮挡，看到的结果就是位置发生了变化。<br><br>通过检查发现是 textarea 标签的 scrollTop 值在改变，即即使隐藏了滚动条，它也在滑动</p><a id="more"></a><style>.textarea-a,.textarea-b{width:300px;height:150px;resize:none;overflow:hidden}.textarea-b{overflow:clip}</style><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ul><li>未修改前</li></ul><figure class="highlight css"><table><tbody><tr><td class="code"><pre><span class="line"><span class="selector-tag">width</span>: 300<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">height</span>: 150<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">resize</span>: <span class="selector-tag">none</span>;</span><br><span class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br></pre></td></tr></tbody></table></figure><textarea class="textarea-a">
@@ -942,9 +973,9 @@ flush [api]                                                  冲洗日志</code>
         <category>Koa</category>
       </categories>
       <tags>
+        <tag>node</tag>
         <tag>koa-body</tag>
         <tag>上传文件</tag>
-        <tag>node</tag>
       </tags>
   </entry>
   <entry>
@@ -973,8 +1004,8 @@ flush [api]                                                  冲洗日志</code>
         <category>Koa</category>
       </categories>
       <tags>
-        <tag>koa-body</tag>
         <tag>node</tag>
+        <tag>koa-body</tag>
         <tag>koa</tag>
       </tags>
   </entry>
