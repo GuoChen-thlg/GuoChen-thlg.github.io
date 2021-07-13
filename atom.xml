@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.thlg.ml/"/>
-  <updated>2021-07-13T03:40:43.830Z</updated>
+  <updated>2021-07-13T14:45:55.799Z</updated>
   <id>https://www.thlg.ml/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux中使用nvm管理npm</title>
+    <link href="https://www.thlg.ml/2021/07/13/linux%E4%B8%AD%E4%BD%BF%E7%94%A8nvm%E7%AE%A1%E7%90%86npm/13273/"/>
+    <id>https://www.thlg.ml/2021/07/13/linux%E4%B8%AD%E4%BD%BF%E7%94%A8nvm%E7%AE%A1%E7%90%86npm/13273/</id>
+    <published>2021-07-13T14:27:11.000Z</published>
+    <updated>2021-07-13T14:45:55.799Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用 nvm 管理 node 版本 很爽有没有啊 😉😉</p><a id="more"></a><h2 id="安装-nvm"><a href="#安装-nvm" class="headerlink" title="安装 nvm"></a>安装 nvm</h2><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash</span><br></pre></td></tr></tbody></table></figure><p>或</p><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash</span><br></pre></td></tr></tbody></table></figure><p>使配置文件生效</p><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></tbody></table></figure><p>验证是否安装成功</p><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> -v nvm</span><br></pre></td></tr></tbody></table></figure><p><img src="/2021/07/13/linux%E4%B8%AD%E4%BD%BF%E7%94%A8nvm%E7%AE%A1%E7%90%86npm/13273/installnvm.png" alt="install nvm"></p><h2 id="安装-node"><a href="#安装-node" class="headerlink" title="安装 node"></a>安装 node</h2><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装最新版本命令</span></span><br><span class="line">nvm install node</span><br><span class="line"></span><br><span class="line"><span class="comment">#  查看远程版本</span></span><br><span class="line">nvm ls-remote</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看安装的版本</span></span><br><span class="line">nvm ls</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前使用版本</span></span><br><span class="line">nvm current</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装具体版本</span></span><br><span class="line">nvm install 14.17.3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用安装的版本</span></span><br><span class="line">nvm use 14.17.3</span><br></pre></td></tr></tbody></table></figure><p><img src="/2021/07/13/linux%E4%B8%AD%E4%BD%BF%E7%94%A8nvm%E7%AE%A1%E7%90%86npm/13273/install.png" alt="install node"></p><blockquote><p>参考&nbsp;&nbsp;<a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">https://github.com/nvm-sh/nvm</a></p></blockquote><!-- rebuild by neat --><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用 nvm 管理 node 版本 很爽有没有啊 😉😉&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://www.thlg.ml/categories/Linux/"/>
+    
+    
+      <category term="linux" scheme="https://www.thlg.ml/tags/linux/"/>
+    
+      <category term="node" scheme="https://www.thlg.ml/tags/node/"/>
+    
+      <category term="nvm" scheme="https://www.thlg.ml/tags/nvm/"/>
+    
+  </entry>
   
   <entry>
     <title>The term &#39;-Command&#39; is not recognized as the name of a cmdlet</title>

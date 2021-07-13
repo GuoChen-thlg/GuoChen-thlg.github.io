@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>linux中使用nvm管理npm</title>
+    <url>/2021/07/13/linux%E4%B8%AD%E4%BD%BF%E7%94%A8nvm%E7%AE%A1%E7%90%86npm/13273/</url>
+    <content><![CDATA[<p>使用 nvm 管理 node 版本 很爽有没有啊 😉😉</p><a id="more"></a><h2 id="安装-nvm"><a href="#安装-nvm" class="headerlink" title="安装 nvm"></a>安装 nvm</h2><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash</span><br></pre></td></tr></tbody></table></figure><p>或</p><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash</span><br></pre></td></tr></tbody></table></figure><p>使配置文件生效</p><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></tbody></table></figure><p>验证是否安装成功</p><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">command</span> -v nvm</span><br></pre></td></tr></tbody></table></figure><p><img src="/2021/07/13/linux%E4%B8%AD%E4%BD%BF%E7%94%A8nvm%E7%AE%A1%E7%90%86npm/13273/installnvm.png" alt="install nvm"></p><h2 id="安装-node"><a href="#安装-node" class="headerlink" title="安装 node"></a>安装 node</h2><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 安装最新版本命令</span></span><br><span class="line">nvm install node</span><br><span class="line"></span><br><span class="line"><span class="comment">#  查看远程版本</span></span><br><span class="line">nvm ls-remote</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看安装的版本</span></span><br><span class="line">nvm ls</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前使用版本</span></span><br><span class="line">nvm current</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装具体版本</span></span><br><span class="line">nvm install 14.17.3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用安装的版本</span></span><br><span class="line">nvm use 14.17.3</span><br></pre></td></tr></tbody></table></figure><p><img src="/2021/07/13/linux%E4%B8%AD%E4%BD%BF%E7%94%A8nvm%E7%AE%A1%E7%90%86npm/13273/install.png" alt="install node"></p><blockquote><p>参考&nbsp;&nbsp;<a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">https://github.com/nvm-sh/nvm</a></p></blockquote><!-- rebuild by neat --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>node</tag>
+        <tag>nvm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>The term &#39;-Command&#39; is not recognized as the name of a cmdlet</title>
     <url>/2021/07/13/The-term-Command-is-not-recognized-as-the-name-of-a-cmdlet/60363/</url>
     <content><![CDATA[<p>某一天,启动项目后，项目无法正常启动，报错如下 ……</p><a id="more"></a><h2 id="报错截图"><a href="#报错截图" class="headerlink" title="报错截图"></a>报错截图</h2><p><img src="/2021/07/13/The-term-Command-is-not-recognized-as-the-name-of-a-cmdlet/60363/error.png" alt="报错截图"></p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>打开 VSCode 的设置文件（settings.json)</p><p>添加如下配置</p><figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">	<span class="comment">// ....</span></span><br><span class="line"></span><br><span class="line">	<span class="attr">"terminal.integrated.shell.windows"</span>: <span class="string">"C:\\Windows\\System32\\cmd.exe"</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p>或者</p><figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">	<span class="attr">"terminal.integrated.defaultProfile.windows"</span>: <span class="string">"C:\\Windows\\System32\\cmd.exe (migrated)"</span>,</span><br><span class="line">	<span class="attr">"terminal.integrated.profiles.windows"</span>: {</span><br><span class="line">		<span class="attr">"C:\\Windows\\System32\\cmd.exe (migrated)"</span>: {</span><br><span class="line">			<span class="attr">"path"</span>: <span class="string">"C:\\Windows\\System32\\cmd.exe"</span>,</span><br><span class="line">			<span class="attr">"args"</span>: []</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><!-- rebuild by neat --><script>
