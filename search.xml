@@ -26,8 +26,8 @@
         <category>Nginx</category>
       </categories>
       <tags>
-        <tag>nginx</tag>
         <tag>linux</tag>
+        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -338,8 +338,8 @@ document.querySelector(`#${id}`).src=canvas.toDataURL()
         <category>Echarts</category>
       </categories>
       <tags>
-        <tag>vue</tag>
         <tag>echarts</tag>
+        <tag>vue</tag>
         <tag>vue-echarts</tag>
       </tags>
   </entry>
@@ -1308,8 +1308,8 @@ flush [api]                                                  冲洗日志</code>
       </categories>
       <tags>
         <tag>shopify</tag>
-        <tag>next.js</tag>
-        <tag>node.js</tag>
+        <tag>next</tag>
+        <tag>node</tag>
       </tags>
   </entry>
   <entry>
@@ -1488,8 +1488,8 @@ flush [api]                                                  冲洗日志</code>
         <category>Hexo</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
         <tag>next</tag>
+        <tag>Hexo</tag>
         <tag>文章置顶</tag>
       </tags>
   </entry>
