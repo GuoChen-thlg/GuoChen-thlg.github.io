@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.thlg.ml/2021/07/14/linux%E5%AE%89%E8%A3%85nginx%E5%AE%9E%E6%93%8D/17248/</loc>
+    <lastmod>2021-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://www.thlg.ml/2021/02/23/Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E6%93%8D/35107/</loc>
+    <lastmod>2021-07-14</lastmod>
+  </url>
+  <url>
     <loc>https://www.thlg.ml/2021/07/13/linux%E4%B8%AD%E4%BD%BF%E7%94%A8nvm%E7%AE%A1%E7%90%86npm/13273/</loc>
     <lastmod>2021-07-13</lastmod>
   </url>
@@ -115,10 +123,6 @@
   <url>
     <loc>https://www.thlg.ml/2021/02/20/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BA%E5%85%AC%E7%BD%91ip%E5%9C%B0%E5%9D%80/30504/</loc>
     <lastmod>2021-02-25</lastmod>
-  </url>
-  <url>
-    <loc>https://www.thlg.ml/2021/02/23/Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%9E%E6%93%8D/35107/</loc>
-    <lastmod>2021-02-23</lastmod>
   </url>
   <url>
     <loc>https://www.thlg.ml/2021/02/19/%E5%A6%82%E4%BD%95%E4%BD%BFdiv%E5%9E%82%E7%9B%B4%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD/9230/</loc>

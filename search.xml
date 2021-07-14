@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>linux安装nginx实操</title>
+    <url>/2021/07/14/linux%E5%AE%89%E8%A3%85nginx%E5%AE%9E%E6%93%8D/17248/</url>
+    <content><![CDATA[<p>作为一个😣👿的开发，不得不在仅有的一台服务器上部署我们的项目，但多个项目如何公用一个端口，相安无事呢？答案你一定知道😁😁</p><a id="more"></a><h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line">yum -y install gcc zlib zlib-devel pcre-devel openssl openssl-devel</span><br></pre></td></tr></tbody></table></figure><h2 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h2><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span></span><br><span class="line">wget http://nginx.org/download/nginx-1.20.1.tar.gz</span><br></pre></td></tr></tbody></table></figure><h2 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h2><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line">tar -zxvf nginx-1.20.1.tar.gz</span><br></pre></td></tr></tbody></table></figure><h2 id="执行配置"><a href="#执行配置" class="headerlink" title="执行配置"></a>执行配置</h2><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> nginx-1.20.1cd</span><br><span class="line">./configure</span><br></pre></td></tr></tbody></table></figure><h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></tbody></table></figure><h2 id="启动-nginx"><a href="#启动-nginx" class="headerlink" title="启动 nginx"></a>启动 nginx</h2><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/nginx</span><br></pre></td></tr></tbody></table></figure><p>访问你的服务器 IP 即可看到 nginx 默认页面<br><img src="/2021/07/14/linux%E5%AE%89%E8%A3%85nginx%E5%AE%9E%E6%93%8D/17248/nginx_index.png" alt="nginx index"></p><!-- rebuild by neat --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>linux中使用nvm管理npm</title>
     <url>/2021/07/13/linux%E4%B8%AD%E4%BD%BF%E7%94%A8nvm%E7%AE%A1%E7%90%86npm/13273/</url>
     <content><![CDATA[<p>使用 nvm 管理 node 版本 很爽有没有啊 😉😉</p><a id="more"></a><h2 id="安装-nvm"><a href="#安装-nvm" class="headerlink" title="安装 nvm"></a>安装 nvm</h2><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash</span><br></pre></td></tr></tbody></table></figure><p>或</p><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash</span><br></pre></td></tr></tbody></table></figure><p>使配置文件生效</p><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></tbody></table></figure><p>验证是否安装成功</p><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line"><span class="built_in">command</span> -v nvm</span><br></pre></td></tr></tbody></table></figure><p><img src="/2021/07/13/linux%E4%B8%AD%E4%BD%BF%E7%94%A8nvm%E7%AE%A1%E7%90%86npm/13273/installnvm.png" alt="install nvm"></p><h2 id="安装-node"><a href="#安装-node" class="headerlink" title="安装 node"></a>安装 node</h2><figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 安装最新版本命令</span></span><br><span class="line">nvm install node</span><br><span class="line"></span><br><span class="line"><span class="comment">#  查看远程版本</span></span><br><span class="line">nvm ls-remote</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看安装的版本</span></span><br><span class="line">nvm ls</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前使用版本</span></span><br><span class="line">nvm current</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装具体版本</span></span><br><span class="line">nvm install 14.17.3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用安装的版本</span></span><br><span class="line">nvm use 14.17.3</span><br></pre></td></tr></tbody></table></figure><p><img src="/2021/07/13/linux%E4%B8%AD%E4%BD%BF%E7%94%A8nvm%E7%AE%A1%E7%90%86npm/13273/install.png" alt="install node"></p><blockquote><p>参考&nbsp;&nbsp;<a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">https://github.com/nvm-sh/nvm</a></p></blockquote><!-- rebuild by neat --><script>
@@ -882,10 +912,11 @@ flush [api]                                                  冲洗日志</code>
         <category>Nginx</category>
       </categories>
       <tags>
-        <tag>Nginx</tag>
+        <tag>nginx</tag>
         <tag>nginx 代理</tag>
         <tag>nginx 安装</tag>
         <tag>nginx 命令</tag>
+        <tag>windows</tag>
       </tags>
   </entry>
   <entry>
